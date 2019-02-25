@@ -12,4 +12,6 @@
     System.out.println("Connected :::::::::::::::::::");
     BasicDBObject basicDBObject = new BasicDBObject("name","Estudy");
     pm.insertBasicDBObject("Test",basicDBObject);
+
+
 %>
