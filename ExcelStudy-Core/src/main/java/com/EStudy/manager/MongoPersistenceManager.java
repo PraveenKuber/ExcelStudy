@@ -160,6 +160,13 @@ public class MongoPersistenceManager {
         return dbCollection.find(query, fields);
     }
 
+
+    public DBCursor searchEntityWithSkipAndLimit(String collectionName, int skipSize, int limitSize) {
+        DBCollection dbCollection = dataBase.getCollection(collectionName);
+        return dbCollection.find().skip(skipSize).limit(limitSize);
+    }
+
+
     public DBCursor searchEntityByCriteriaAndLimit(String collectionName, DBObject query, DBObject fields, int skipSize, int limitSize) {
         DBCollection dbCollection = dataBase.getCollection(collectionName);
         return dbCollection.find(query, fields).skip(skipSize).limit(limitSize);

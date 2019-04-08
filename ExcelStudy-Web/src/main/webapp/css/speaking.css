@@ -1,0 +1,613 @@
+/*Created by : Praveen K*/
+
+
+.status-div {
+    border: 2px solid rgba(80, 64, 140, 0.51);
+    width: 22%;
+    padding: 8px;
+    padding-bottom: 2%;
+    background-color: rgba(220, 239, 245, 0.41);
+    font-size: 13px;
+    font-family: sans-serif;
+    margin-left: 40%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+
+
+.word-compare-content.compare-section {
+    background-color: rgba(0, 0, 255, 0);
+}
+
+
+.ra-compare-module {
+    background-color: rgba(0, 0, 255, 0.33);
+    border-left: 6px solid #66615B;
+    margin-top: 2%;
+    width: 80%;
+    margin-left: 10%;
+}
+
+
+
+
+.status-header {
+    text-align: center;
+    font-weight: 600;
+}
+
+.current-status-header {
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+
+.current-status,.status-bar {
+    margin-top: 10px;
+}
+
+/*.status-bar {
+    width: 100%;
+    padding-top: 1%;
+    padding-bottom: 14%;
+    background-color: rgba(41, 0, 255, 0.11);
+}*/
+
+
+.audio-script-ra{
+    color:white !important;
+}
+
+.stop.stop-ra,#record-speaking-details {
+    display: none;
+}
+
+#play:hover,#download:hover{
+    box-shadow: none !important;
+    text-decoration: none !important;
+    color: #66615b !important;
+}
+
+#play,#download{
+    color: #66615b !important;
+}
+
+#audio{
+    display: none;
+}
+
+.ra-alertMessage,.ra-control-section,.ra-compare-module{
+    display: none;
+}
+
+
+.close-analysis-ra {
+    position: absolute;
+    margin-left: 66%;
+    margin-top: -1px;
+    cursor: pointer;
+}
+
+
+
+.progress-bar {
+    margin-top: -7px;
+    width: calc(100% - 6px);
+    height: 20px;
+    background: rgba(122, 158, 159, 0.31) !important;
+    padding: 3px;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+}
+
+/*.progress-bar-fill {
+    margin-top: -3px;
+    margin-left: -3px;
+    display: block;
+    height: 20px;
+    background: #659cef;
+    border-radius: 3px;
+    !*transition: width 250ms ease-in-out;*!
+   !* transition: width 20s ease-in-out;*!
+}*/
+
+.readAloud,.repeatSentence,.describeImage,.retellLecture,.shortQuestion{
+    margin-top: -3px;
+    margin-left: -3px;
+    display: block;
+    height: 20px;
+    background: #659cef;
+    border-radius: 3px;
+    /*transition: width 250ms ease-in-out;*/
+    /* transition: width 20s ease-in-out;*/
+}
+
+/*Control bar*/
+
+.control-div {
+    display: inline-flex;
+    width: 65%;
+    margin-left: 18%;
+    margin-top: 2%;
+}
+
+.control-label {
+    width: 25%;
+    text-align: center;
+    padding: 3px;
+    margin-left: 5%;
+    border-radius: 9px;
+    background-color: rgba(232, 158, 131, 0.28) !important;
+    cursor: pointer;
+    border: none !important;
+}
+
+
+/*test*/
+
+.button{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px 5px;
+    padding: 5px 12px;
+    cursor: pointer;
+    outline: none;
+    font-size: 13px;
+    text-decoration: none !important;
+    text-align: center;
+    color:#fff;
+    background-color: #4D90FE;
+    background-image: linear-gradient(top,#4D90FE, #4787ED);
+    background-image: -ms-linear-gradient(top,#4D90FE, #4787ED);
+    background-image: -o-linear-gradient(top,#4D90FE, #4787ED);
+    background-image: linear-gradient(top,#4D90FE, #4787ED);
+    border: 1px solid #4787ED;
+    box-shadow: 0 1px 3px #BFBFBF;
+}
+a.button{
+    color: black;
+    margin-left: 5%;
+}
+.button:hover{
+    box-shadow: inset 0px 1px 1px #8C8C8C;
+}
+.button.disabled{
+    box-shadow:none;
+    opacity:0.7;
+}
+
+.recordingArea {
+    margin-top: 10px;
+}
+
+
+audio#audio {
+    margin-right: 1%;
+    margin-top: 1%;
+    margin-left: 39%;
+}
+
+canvas{
+    display: block;
+}
+
+
+textarea.speechToTextArea {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#recordForX {
+    display: none;
+}
+
+#level {
+    display: none;
+}
+
+
+.repeatSentence {
+   /* width: 38% !important;*/
+    /* margin-left: -9%; */
+}
+
+
+
+
+/*Repeat sentence*/
+
+.record-repeat-sentence,.stop-repeat-sentence {
+    width: 5%;
+    border: 1px solid;
+    display: none;
+}
+
+
+.alert-message.rp-alertMessage {
+    display: none;
+}
+
+.repeatSentence-compare-module{
+    display: none;
+}
+
+.repeatSentence-compare-module {
+    width: 99%;
+    border-left: 5px solid rgba(255, 87, 34, 0.73);
+    background-color: rgb(170, 192, 216);
+    padding: 10px;
+}
+
+.answer-analysis {
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+}
+.audio-script-header,.recorded-script-header,.word-compare-header{
+    color: white;
+    font-size:14px;
+}
+
+.audio-script-content,.recorded-script-content,.word-compare-content{
+    margin-top: 5px;
+    font-size:14px;
+    background-color: white;
+    min-height: 23px;
+}
+
+.audio-script {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.word-compare {
+    margin-bottom: 3%;
+}
+
+
+.footer-div {
+    padding: 2%;
+    width: 40%;
+    margin-left: 39%;
+}
+
+
+.try-again,.audio-compare{
+    padding: 5px;
+   /* border: 1px solid black;*/
+    border-radius: 6px;
+    background-color: rgba(255, 192, 203, 0.34);
+}
+
+
+.audio-compare {
+    margin-left: 2%;
+}
+
+.recordCounter {
+    width: 20%;
+    margin-left: 42%;
+    color: black;
+}
+
+
+.alert-message {
+    margin-left: 38%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-right: 1%;
+    padding-left: 1%;
+    width: 26%;
+    border: 1px solid;
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+}
+.close-icon {
+    cursor: pointer;
+    position: absolute;
+    margin-left: 256px;
+    margin-top: -1%;
+}
+
+.alert-content {
+    font-size: 13px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.alert-header {
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*DI*/
+
+
+.describe-image-details {
+    width: 70%;
+}
+
+.di-image-property {
+    width: 100%;
+}
+
+.describe-image {
+    display: inline-flex;
+}
+
+
+.di-status-div {
+    border: 2px solid rgba(80, 64, 140, 0.51);
+    width: 70%;
+    padding: 8px;
+    padding-bottom: 7%;
+    background-color: rgba(220, 239, 245, 0.41);
+    font-size: 13px;
+    font-family: sans-serif;
+    margin-left: 10%;
+    margin-top: 0%;
+    margin-bottom: 2%;
+}
+
+
+
+
+.close-answer-analysis {
+    margin-left: 81%;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+
+.di-alertMessage {
+    margin-top: 25%;
+    display: none;
+}
+
+
+#di-audio {
+    margin-left: 37%;
+    margin-top: 1%;
+    display: none;
+}
+
+
+.di-analysis {
+    border-radius: 4px;
+    margin-right: 3%;
+    background-color: rgba(255, 192, 203, 0.41);
+    cursor: pointer;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+
+.di-recorded-play {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.di-recorded-tryAgain,.di-recorded-download{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.record-di, .stop-di {
+    display: none;
+}
+
+
+
+/*RL*/
+
+
+
+.rl-script-content,.rl-speech-content {
+    font-size: 15px;
+    padding-bottom: 2%;
+}
+
+.rl-script-header,.rl-speech-header{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.rl-speech-content {
+    margin-bottom: 20px;
+}
+
+
+.rl-message {
+    width: 99%;
+    border-top: 1px solid;
+    padding-bottom: 16px;
+    padding-top: 10px;
+}
+
+.display-rl-script,.display-rl-speech {
+    background-color: rgba(255, 0, 0, 0.4);
+    color: white;
+    border-left: 5px solid black;
+    padding-left: 10px;
+}
+
+.display-rl-speech {
+    margin-top: 15px;
+}
+
+
+.try-again,.audio-compare{
+    cursor: pointer;
+}
+
+
+.record-retellLecture, .stop-retellLecture,
+.record-audio-retellLecture, .stop-audio-retellLecture {
+    display: none;
+}
+
+.rl-alertMessage{
+    display: none;
+}
+
+.rl-footer {
+    margin-left: 33% !important;
+}
+
+.show-rl-details{
+    display: none;
+}
+
+#recorded-retellLecture {
+    display: none;
+}
+
+.recordCounter-retellLecture {
+    width: 20%;
+    margin-left: 45%;
+}
+
+
+
+/*ASQ*/
+
+
+.sq-compare-module {
+    border-left: 5px solid #ff2f2f;
+    padding-left: 1%;
+    background-color: rgba(0, 16, 100, 0.61);
+    color: white;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.audio-script-sq,.audio-script-header-sq,.audio-script-content-sq,
+.recorded-script-content-sq,.recorded-script-header-sq,
+.word-compare-header-sq,.word-compare-content-sq{
+    margin-top: 1%;
+}
+
+
+span.close-analysis-sq {
+    position: absolute;
+    margin-left: 76%;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+.sq-pagination,.rl-pagination {
+    width: 50%;
+    display: inline-flex;
+    margin-left: 32%;
+    margin-bottom:10%;
+}
+
+
+
+.common-pagination,.rl-common-pagination
+,.sq-next,.sq-previous,.rl-next,.rl-previous {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border: 1px solid lightgray;
+    margin-left: 4%;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 2px;
+    font-size: 12px;
+}
+
+
+
+
+.active.common-pagination,.active.rl-common-pagination,
+.active.sq-next,.active.sq-previous
+,.active.rl-next,.active.rl-previous{
+    background-color: rgba(0, 0, 255, 0.61);
+    color: white;
+    border: 1px solid orange;
+}
+
+
+.common-pagination:hover,.rl-common-pagination:hover,.sq-next:hover,.sq-previous:hover,
+.rl-next:hover,.rl-previous:hover{
+    background-color: rgba(0, 0, 255, 0.27);
+}
+
+.recordCounter-sq {
+    width: 15%;
+    margin-left: 40%;
+    color: white;
+}
+
+
+/*Display SQ*/
+
+
+.footer-div,.sq-compare-module,.sq-alertMessage,
+.record-short-question,.stop-short-question{
+    display: none;
+}
+
+.main-panel {
+    background-color: white !important;
+}
+
+
+.audio-compare:hover,.sq-audio-compare:hover {
+    background-color: rgba(3, 169, 244, 0.74);
+}
+
+
+
+
+/*CP style*/
+
+#cp-style{
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border: 1px solid lightgray;
+    margin-left: 4%;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 2px;
+    font-size: 12px;
+}
+
+
+.active#cp-style{
+    background-color: rgba(0, 0, 255, 0.61);
+    color: white;
+    border: 1px solid orange;
+}
+
+#cp-style:hover{
+    background-color: rgba(0, 0, 255, 0.27);
+}
+
+
+
+#cp-style-div{
+    margin-top: 1%;
+    width: 50%;
+    display: inline-flex;
+    margin-left: 32%;
+    margin-bottom:10%;
+}

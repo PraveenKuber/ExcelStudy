@@ -1,32 +1,39 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicon.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Bootstrap PLM</title>
+    <title>OEC</title>
 
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../../css/executiveDashboard.css" rel="stylesheet"/>
+    <link href="../../css/speaking.css" rel="stylesheet"/>
+    <link href="../../css/writing.css" rel="stylesheet"/>
+
 
     <!--  Paper Dashboard core CSS    -->
     <link href="../../assets/css/paper-dashboard.css" rel="stylesheet"/>
 
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="../../assets/css/demo.css" rel="stylesheet" />
+    <link href="../../assets/css/demo.css" rel="stylesheet"/>
 
 
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="../../assets/css/themify-icons.css" rel="stylesheet">
+
+
+
 </head>
 
 <body>
@@ -40,20 +47,17 @@
             <a href="http://www.creative-tim.com" class="simple-text logo-mini">
                 BT
             </a>
-            <a href="http://www.creative-tim.com" class="simple-text logo-normal">bootstrap plm</a>
+            <a href="http://www.creative-tim.com" class="simple-text logo-normal">OCE</a>
         </div>
         <div class="sidebar-wrapper">
             <div class="user">
                 <div class="info">
                     <div class="photo">
-                        <img src="../../assets/img/faces/face-2.jpg" />
+                        <img src="../../assets/img/faces/face-1.jpg"/>
                     </div>
 
                     <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-	                        <span>
-								Chet Faker
-		                        <b class="caret"></b>
-							</span>
+                        <span></span>Praveen<b class="caret"></b></span>
                     </a>
                     <div class="clearfix"></div>
 
@@ -66,12 +70,6 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#edit">
-                                    <span class="sidebar-mini">Ep</span>
-                                    <span class="sidebar-normal">Edit Profile</span>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="#settings">
                                     <span class="sidebar-mini">S</span>
                                     <span class="sidebar-normal">Settings</span>
@@ -81,26 +79,145 @@
                     </div>
                 </div>
             </div>
+
+            <%--Dashboard changes--%>
+
             <ul class="nav">
                 <li class="active">
                     <a data-toggle="collapse" href="#dashboardOverview" aria-expanded="true">
                         <i class="ti-panel"></i>
-                        <p>Dashboard
+                        <p>Listening
                             <b class="caret"></b>
                         </p>
                     </a>
                     <div class="collapse in" id="dashboardOverview">
                         <ul class="nav">
                             <li class="active">
-                                <div class="Overview-page">
-                                    <span class="sidebar-mini">L</span>
-                                    <span class="sidebar-normal">Listening</span>
+                                <div class="listening-page summarize_spoken_text">
+                                    <span class="sidebar-mini">S</span>
+                                    <span class="sidebar-normal">Summarize spoken text</span>
                                 </div>
                             </li>
                             <li>
-                                <div class="Overview-page">
-                                    <span class="sidebar-mini">S</span>
-                                    <span class="sidebar-normal">Stats</span>
+                                <div class="listening-page">
+                                    <span class="sidebar-mini">M</span>
+                                    <span class="sidebar-normal">MC, choose multiple answers</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+               <%-- <li class="active">
+                    <a data-toggle="collapse" href="#dashboardOverview" aria-expanded="true">
+                        <i class="ti-panel"></i>
+                        <p>Excel Speaking
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <div class="collapse in" id="componentsExamples">
+                        <ul class="nav">
+                            <li class="active">
+                                <div class="speaking-page read_aloud">
+                                    &lt;%&ndash;<span class="sidebar-mini">icon - </span>&ndash;%&gt;
+                                    <span class="sidebar-normal">Read aloud</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="speaking-page repeat_sentence">
+                                   &lt;%&ndash; <span class="sidebar-mini">icon - </span>&ndash;%&gt;
+                                    <span class="sidebar-normal">Repeat sentence</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>--%>
+
+
+                <li>
+                    <a data-toggle="collapse" href="#componentsExamples">
+                        <i class="ti-package"></i>
+                        <p>Speaking
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <div class="collapse" id="componentsExamples">
+                        <ul class="nav">
+                            <li>
+                                <div class="speaking-page read_aloud">
+                                    <span class="sidebar-mini">RA - </span>
+                                    <span class="sidebar-normal">Read aloud</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="speaking-page repeat_sentence">
+                                    <span class="sidebar-mini">RS - </span>
+                                    <span class="sidebar-normal">Repeat sentence</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="speaking-page describe_image">
+                                    <span class="sidebar-mini">DI - </span>
+                                    <span class="sidebar-normal">Describe image</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="speaking-page retell_lecture">
+                                    <span class="sidebar-mini">RL - </span>
+                                    <span class="sidebar-normal">Re-tell lecture</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="speaking-page short-question">
+                                    <span class="sidebar-mini">ASQ - </span>
+                                    <span class="sidebar-normal">Answer short question</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+
+              <%--  <li>
+                    <a data-toggle="collapse" href="#formsExamples">
+                        <i class="ti-package"></i>
+                        <p>Writing
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <div class="collapse" id="formsExamples">
+                        <ul class="nav">
+                            <li>
+                                <div class="writing-page summarizeWrittenText">
+                                    <span class="sidebar-mini">SWT- </span>
+                                    <span class="sidebar-normal">Summarize written text</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>--%>
+
+                <li>
+                    <a data-toggle="collapse" href="#formsExamples">
+                        <i class="ti-clipboard"></i>
+                        <p>Writing
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <div class="collapse" id="formsExamples">
+                        <ul class="nav">
+                            <li>
+                                <div class="writing-page summarizeWrittenText">
+                                    <span class="sidebar-mini">SWT-</span>
+                                    <span class="sidebar-normal">Summarize written text</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <li>
+                                <div class="writing-page writeEssay">
+                                    <span class="sidebar-mini">WE-</span>
+                                    <span class="sidebar-normal">Write essay</span>
                                 </div>
                             </li>
                         </ul>
@@ -109,373 +226,405 @@
 
 
 
-                        </ul>
-                    </div>
-                </li>
+
             </ul>
         </div>
+        </li>
+        </ul>
     </div>
+</div>
 
-    <div class="main-panel">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-minimize">
-                    <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-more-alt"></i></button>
-                </div>
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar bar1"></span>
-                        <span class="icon-bar bar2"></span>
-                        <span class="icon-bar bar3"></span>
-                    </button>
-                    <a class="navbar-brand" href="#Dashboard">
-                        Overview
-                    </a>
-                </div>
-                <div class="collapse navbar-collapse">
+<div class="main-panel">
+    <nav class="navbar navbar-default">
 
-                    <form class="navbar-form navbar-left navbar-search-form" role="search">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            <input type="text" value="" class="form-control" placeholder="Search...">
+        <div class="container-fluid">
+            <div class="navbar-minimize">
+                <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-more-alt"></i></button>
+            </div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar bar1"></span>
+                    <span class="icon-bar bar2"></span>
+                    <span class="icon-bar bar3"></span>
+                </button>
+                <a class="navbar-brand" href="#Dashboard">
+                    Overview
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+
+                <form class="navbar-form navbar-left navbar-search-form" role="search">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                        <input type="text" value="" class="form-control" placeholder="Search...">
+                    </div>
+                </form>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#stats" class="dropdown-toggle btn-magnify" data-toggle="dropdown">
+                            <i class="ti-panel"></i>
+                            <p>Stats</p>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#notifications" class="dropdown-toggle btn-rotate" data-toggle="dropdown">
+                            <i class="ti-bell"></i>
+                            <span class="notification">5</span>
+                            <p class="hidden-md hidden-lg">
+                                Notifications
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#not1">Notification 1</a></li>
+                            <li><a href="#not2">Notification 2</a></li>
+                            <li><a href="#not3">Notification 3</a></li>
+                            <li><a href="#not4">Notification 4</a></li>
+                            <li><a href="#another">Another notification</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#settings" class="btn-rotate">
+                            <i class="ti-settings"></i>
+                            <p class="hidden-md hidden-lg">
+                                Settings
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <%--<div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="icon-big icon-warning text-center">
+                                        <i class="ti-server"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="numbers">
+                                        <p>Capacity</p>
+                                        105GB
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </form>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#stats" class="dropdown-toggle btn-magnify" data-toggle="dropdown">
-                                <i class="ti-panel"></i>
-                                <p>Stats</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#notifications" class="dropdown-toggle btn-rotate" data-toggle="dropdown">
-                                <i class="ti-bell"></i>
-                                <span class="notification">5</span>
-                                <p class="hidden-md hidden-lg">
-                                    Notifications
-                                    <b class="caret"></b>
-                                </p>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#not1">Notification 1</a></li>
-                                <li><a href="#not2">Notification 2</a></li>
-                                <li><a href="#not3">Notification 3</a></li>
-                                <li><a href="#not4">Notification 4</a></li>
-                                <li><a href="#another">Another notification</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#settings" class="btn-rotate">
-                                <i class="ti-settings"></i>
-                                <p class="hidden-md hidden-lg">
-                                    Settings
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
+                        <div class="card-footer">
+                            <hr/>
+                            <div class="stats">
+                                <i class="ti-reload"></i> Updated now
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="icon-big icon-success text-center">
+                                        <i class="ti-wallet"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="numbers">
+                                        <p>Revenue</p>
+                                        $1,345
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <hr/>
+                            <div class="stats">
+                                <i class="ti-calendar"></i> Last day
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="icon-big icon-danger text-center">
+                                        <i class="ti-pulse"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="numbers">
+                                        <p>Errors</p>
+                                        23
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <hr/>
+                            <div class="stats">
+                                <i class="ti-timer"></i> In the last hour
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="icon-big icon-info text-center">
+                                        <i class="ti-twitter-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="numbers">
+                                        <p>Followers</p>
+                                        +45
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <hr/>
+                            <div class="stats">
+                                <i class="ti-reload"></i> Updated now
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col-xs-5">
-                                        <div class="icon-big icon-warning text-center">
-                                            <i class="ti-server"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-7">
-                                        <div class="numbers">
-                                            <p>Capacity</p>
-                                            105GB
-                                        </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-xs-7">
+                                    <div class="numbers pull-left">
+                                        $34,657
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-footer">
-                                <hr />
-                                <div class="stats">
-                                    <i class="ti-reload"></i> Updated now
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col-xs-5">
-                                        <div class="icon-big icon-success text-center">
-                                            <i class="ti-wallet"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-7">
-                                        <div class="numbers">
-                                            <p>Revenue</p>
-                                            $1,345
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <hr />
-                                <div class="stats">
-                                    <i class="ti-calendar"></i> Last day
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col-xs-5">
-                                        <div class="icon-big icon-danger text-center">
-                                            <i class="ti-pulse"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-7">
-                                        <div class="numbers">
-                                            <p>Errors</p>
-                                            23
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <hr />
-                                <div class="stats">
-                                    <i class="ti-timer"></i> In the last hour
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col-xs-5">
-                                        <div class="icon-big icon-info text-center">
-                                            <i class="ti-twitter-alt"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-7">
-                                        <div class="numbers">
-                                            <p>Followers</p>
-                                            +45
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <hr />
-                                <div class="stats">
-                                    <i class="ti-reload"></i> Updated now
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col-xs-7">
-                                        <div class="numbers pull-left">
-                                            $34,657
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-5">
-                                        <div class="pull-right">
+                                <div class="col-xs-5">
+                                    <div class="pull-right">
 												<span class="label label-success">
 		 											+18%
 												</span>
-                                        </div>
                                     </div>
                                 </div>
-                                <h6 class="big-title">total earnings <span class="text-muted">in last</span> ten <span class="text-muted">quarters</span></h6>
-                                <div id="chartTotalEarnings"></div>
                             </div>
-                            <div class="card-footer">
-                                <hr>
-                                <div class="footer-title">Financial Statistics</div>
-                                <div class="pull-right">
-                                    <button class="btn btn-info btn-fill btn-icon btn-sm">
-                                        <i class="ti-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
+                            <h6 class="big-title">total earnings <span class="text-muted">in last</span> ten <span
+                                    class="text-muted">quarters</span></h6>
+                            <div id="chartTotalEarnings"></div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col-xs-7">
-                                        <div class="numbers pull-left">
-                                            169
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-5">
-                                        <div class="pull-right">
-												<span class="label label-danger">
-		 											-14%
-												</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h6 class="big-title">total subscriptions <span class="text-muted">in last</span> 7 days</h6>
-                                <div id="chartTotalSubscriptions"></div>
-                            </div>
-                            <div class="card-footer">
-                                <hr>
-                                <div class="footer-title">View all members</div>
-                                <div class="pull-right">
-                                    <button class="btn btn-default btn-fill btn-icon btn-sm">
-                                        <i class="ti-angle-right"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col-xs-7">
-                                        <div class="numbers pull-left">
-                                            8,960
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-5">
-                                        <div class="pull-right">
-												<span class="label label-warning">
-		 											~51%
-												</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h6 class="big-title">total downloads <span class="text-muted">in last</span> 6 years</h6>
-                                <div id="chartTotalDownloads" ></div>
-                            </div>
-                            <div class="card-footer">
-                                <hr>
-                                <div class="footer-title">View more details</div>
-                                <div class="pull-right">
-                                    <button class="btn btn-success btn-fill btn-icon btn-sm">
-                                        <i class="ti-info"></i>
-                                    </button>
-                                </div>
+                        <div class="card-footer">
+                            <hr>
+                            <div class="footer-title">Financial Statistics</div>
+                            <div class="pull-right">
+                                <button class="btn btn-info btn-fill btn-icon btn-sm">
+                                    <i class="ti-plus"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card card-circle-chart" data-background-color="blue">
-                            <div class="card-header text-center">
-                                <h5 class="card-title">Dashboard</h5>
-                                <p class="description">Monthly sales target</p>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-xs-7">
+                                    <div class="numbers pull-left">
+                                        169
+                                    </div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="pull-right">
+												<span class="label label-danger">
+		 											-14%
+												</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-content">
-                                <div id="chartDashboard" class="chart-circle" data-percent="70">70%</div>
+                            <h6 class="big-title">total subscriptions <span class="text-muted">in last</span> 7 days
+                            </h6>
+                            <div id="chartTotalSubscriptions"></div>
+                        </div>
+                        <div class="card-footer">
+                            <hr>
+                            <div class="footer-title">View all members</div>
+                            <div class="pull-right">
+                                <button class="btn btn-default btn-fill btn-icon btn-sm">
+                                    <i class="ti-angle-right"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card card-circle-chart" data-background-color="green">
-                            <div class="card-header text-center">
-                                <h5 class="card-title">Orders</h5>
-                                <p class="description">Completed</p>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-xs-7">
+                                    <div class="numbers pull-left">
+                                        8,960
+                                    </div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="pull-right">
+												<span class="label label-warning">
+		 											~51%
+												</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-content">
-                                <div id="chartOrders" class="chart-circle" data-percent="34">34%</div>
+                            <h6 class="big-title">total downloads <span class="text-muted">in last</span> 6 years</h6>
+                            <div id="chartTotalDownloads"></div>
+                        </div>
+                        <div class="card-footer">
+                            <hr>
+                            <div class="footer-title">View more details</div>
+                            <div class="pull-right">
+                                <button class="btn btn-success btn-fill btn-icon btn-sm">
+                                    <i class="ti-info"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card card-circle-chart" data-background-color="orange">
-                            <div class="card-header text-center">
-                                <h5 class="card-title">New Visitors</h5>
-                                <p class="description">Out of total number</p>
-                            </div>
-                            <div class="card-content">
-                                <div id="chartNewVisitors" class="chart-circle" data-percent="62">62%</div>
-                            </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card card-circle-chart" data-background-color="blue">
+                        <div class="card-header text-center">
+                            <h5 class="card-title">Dashboard</h5>
+                            <p class="description">Monthly sales target</p>
+                        </div>
+                        <div class="card-content">
+                            <div id="chartDashboard" class="chart-circle" data-percent="70">70%</div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card card-circle-chart" data-background-color="brown">
-                            <div class="card-header text-center">
-                                <h5 class="card-title">Subscriptions</h5>
-                                <p class="description">Monthly newsletter</p>
-                            </div>
-                            <div class="card-content">
-                                <div id="chartSubscriptions" class="chart-circle" data-percent="10">10%</div>
-                            </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card card-circle-chart" data-background-color="green">
+                        <div class="card-header text-center">
+                            <h5 class="card-title">Orders</h5>
+                            <p class="description">Completed</p>
+                        </div>
+                        <div class="card-content">
+                            <div id="chartOrders" class="chart-circle" data-percent="34">34%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card card-circle-chart" data-background-color="orange">
+                        <div class="card-header text-center">
+                            <h5 class="card-title">New Visitors</h5>
+                            <p class="description">Out of total number</p>
+                        </div>
+                        <div class="card-content">
+                            <div id="chartNewVisitors" class="chart-circle" data-percent="62">62%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card card-circle-chart" data-background-color="brown">
+                        <div class="card-header text-center">
+                            <h5 class="card-title">Subscriptions</h5>
+                            <p class="description">Monthly newsletter</p>
+                        </div>
+                        <div class="card-content">
+                            <div id="chartSubscriptions" class="chart-circle" data-percent="10">10%</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="http://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://blog.creative-tim.com">
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.creative-tim.com/license">
-                                Licenses
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
-                </div>
+    </div>--%>
+
+
+
+    <%--<footer class="footer">
+        <div class="container-fluid">
+            <nav class="pull-left">
+                <ul>
+                    <li>
+                        <a href="http://www.creative-tim.com">
+                            Creative Tim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://blog.creative-tim.com">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.creative-tim.com/license">
+                            Licenses
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright pull-right">
+                &copy;
+                <script>document.write(new Date().getFullYear())</script>
+                , made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
             </div>
-        </footer>
+        </div>
+    </footer>--%>
+
+
+</div>
+</div>
+
+<div class="load-audio">
+    <audio class="loader" controls>
+        <source class="loader" src="../../resource/loader/load.mp3" type="audio/ogg">
+    </audio>
+</div>
+
+<%--Modal--%>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dialogModel">Speaking alert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Alert! The time given for the speaking is completed
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>
+
+
 </body>
 
-<style>
-    h2.test {
-        background-color: white;
-    }
-
-    .Overview-page {
-        color: white;
-        cursor: pointer;
-        margin-left: 33px;
-        font-size: 14px;
-    }
-
-
-</style>
 
 <!--   Core JS Files. Extra: TouchPunch for touch library inside jquery-ui.min.js   -->
 <script src="../../assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="../../assets/js/jquery-ui.min.js" type="text/javascript"></script>
 <script src="../../assets/js/perfect-scrollbar.min.js" type="text/javascript"></script>
 <script src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<script src="src/recorder.js"></script>
+<script src="src/Fr.voice.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/app.js"></script>
+
 
 <!--  Forms Validations Plugin -->
 <script src="../../assets/js/jquery.validate.min.js"></script>
@@ -531,11 +680,22 @@
 <!-- Paper Dashboard PRO DEMO methods, don't include it in your project! -->
 <script src="../../assets/js/demo.js"></script>
 
+
+
 <%--Clicking--%>
 <script src="../../js/listening/listening.js"></script>
+<script src="../../js/speaking/speaking.js"></script>
+<script src="../../js/speaking/repeatSentence.js"></script>
+<script src="../../js/speaking/describeImage.js"></script>
+<script src="../../js/speaking/retellLecture.js"></script>
+<script src="../../js/speaking/shortQuestion.js"></script>
+<script src="../../js/writing/summarizeWrittenText.js"></script>
+<script src="../../js/writing/writeEssay.js"></script>
+
+
 
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function () {
         demo.initOverviewDashboard();
         demo.initCirclePercentage();
 

@@ -7,7 +7,16 @@ var listening = {};
 
 
 
-$('.Overview-page').click(function () {
+$('.summarize_spoken_text').click(function () {
     /*ajax*/
-    console.log("Clikced::::::::::::::::::::::::::::::")
+    $.ajax({
+        method: "POST",
+        url: "../../ajax/listening/getSummarizeSpokenTextDetails.jsp",
+        success: function (data) {
+            var json = JSON.parse(data.trim());
+            console.log("Log is ::::::::::"+json.details)
+            $('.main-panel').html(json.details);
+        }
+    });
+    
 })
