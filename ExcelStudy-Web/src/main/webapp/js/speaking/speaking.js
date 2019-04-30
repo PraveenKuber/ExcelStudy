@@ -7,9 +7,28 @@ var speaking  = {};
 var interval;
 var timeOut;
 
+var speechRecognizerRA = new webkitSpeechRecognition();
+
+
+function clearAll() {
+    clearInterval(interval);
+    clearTimeout(timeOut);
+    clearInterval(processBarId);
+    clearInterval(processBarIdRL);
+    clearInterval(intervalRL1);
+    clearInterval(interval1);
+    clearInterval(processBarIdRS);
+    clearInterval(processBarIdNewSQ);
+    clearInterval(interval1ForSQ);
+    clearInterval(processBarId);
+}
+
 $('.read_aloud').click(function (event) {
     clearTimeout(timeOut);
     clearInterval(interval);
+    clearInterval(processBarIdRA);
+    speechRecognizerRA.abort();
+    clearAll();
     /*ajax*/
     $.ajax({
         method: "POST",
@@ -20,7 +39,7 @@ $('.read_aloud').click(function (event) {
             $('.main-panel').html(json.details);
             var recordableTime = parseInt(json.recordableTime);
             //speaking.countDownDiv(10);
-             var numberOfSeconds = 10,
+             var numberOfSeconds = recordableTime,
                 display = document.querySelector('.current-status');
                 startTimerForReadAloud(numberOfSeconds, display,recordableTime);
         }
@@ -45,18 +64,23 @@ function startTimerForReadAloud(duration, display,recordableTime) {
             $('#record-speaking-details').click();
 
             clearInterval(interval);
-            $('.current-status').text("completed");
+            $('.current-status').text("In progress");
 
             $(".loader").trigger('play');
-            $('.readAloud').delay(1000).queue(function () {
+
+            processProgressBarRA(recordableTime,"current-status");
+            
+           /* $('.readAloud').delay(1000).queue(function () {
                 $(this).css("transition","width "+recordableTime+"s ease-in-out");
                 $(this).css('width', '103%')
-            });
+            });*/
 
             /*Show after completion*/
            timeOut  = setTimeout(function(){
                 $('.ra-alertMessage').show();
                 $('.ra-control-section').show();
+                $('.stop-ra').click();
+               speechRecognizerRA.abort();
             },(recordableTime*1000));
             
             
@@ -64,10 +88,37 @@ function startTimerForReadAloud(duration, display,recordableTime) {
     }, 1000);
 }
 
-var speechRecognizer = new webkitSpeechRecognition();
-speechRecognizer.continuous = true;
-speechRecognizer.interimResults = true;
-speechRecognizer.lang = 'en-IN';
+/*New changes */
+
+
+var processBarIdRA;
+function  processProgressBarRA(recordableTime,className) {
+    console.log("Coming for RA::::::::::::::::"+recordableTime);
+    var progressBarWidth = 0;
+    var processWidth = 103/recordableTime;
+    processBarIdRA = setInterval(moveProcessBar,1000);
+    function moveProcessBar() {
+        if (progressBarWidth >= 103) {
+            $('.'+className).text("Completed");
+            clearInterval(processBarIdRA);
+        } else {
+            progressBarWidth = progressBarWidth + processWidth;
+            $('.readAloud').css({"width":progressBarWidth+"%"})
+        }
+    }
+}
+
+function  stopProcessBarRA() {
+    clearInterval(processBarIdRA);
+    clearTimeout(timeOut);
+}
+
+/*End*/
+
+
+
+
+
 
 
 $(document).on("click", "#record-speaking-details", function () {
@@ -75,15 +126,12 @@ $(document).on("click", "#record-speaking-details", function () {
     if('webkitSpeechRecognition' in window){
         console.log("inside ::::::::::")
         $('#recordForX').click();
-        var speechRecognizer = new webkitSpeechRecognition();
-        speechRecognizer.continuous = true;
-        speechRecognizer.interimResults = true;
-        speechRecognizer.lang = 'en-IN';
-        speechRecognizer.start();
-
+        speechRecognizerRA.continuous = true;
+        speechRecognizerRA.interimResults = true;
+        speechRecognizerRA.lang = 'en-IN';
+        speechRecognizerRA.start();
         var finalTranscripts = '';
-
-        speechRecognizer.onresult = function(event){
+        speechRecognizerRA.onresult = function(event){
             var interimTranscripts = '';
             for(var i = event.resultIndex; i < event.results.length; i++){
                 var transcript = event.results[i][0].transcript;
@@ -97,7 +145,7 @@ $(document).on("click", "#record-speaking-details", function () {
             /*r.innerHTML = finalTranscripts + '<span style="color:#999">' + interimTranscripts + '</span>';*/
             $('.speechToTextArea').text(finalTranscripts + interimTranscripts);
         };
-        speechRecognizer.onerror = function (event) {
+        speechRecognizerRA.onerror = function (event) {
         };
         
 
@@ -109,7 +157,8 @@ $(document).on("click", "#record-speaking-details", function () {
 
 $(document).on('click', ".stop-ra", function () {
     console.log("Clicked for stop in RA");
-    speechRecognizerRS.abort();
+    speechRecognizerRA.abort();
+    $('#stop').click();
 });
 
 
@@ -170,10 +219,10 @@ $(document).on('click','.compare', function(){
 });
 
 
-$(document).on('click', ".stop", function () {
+/*$(document).on('click', ".stop", function () {
     console.log("Clicked ::::::::::");
     speechRecognizer.abort();
-});
+});*/
 
 
 
@@ -207,6 +256,9 @@ speaking.getRenderDetails = function (pageNumber,page,pageId) {
     console.log("Clicked here RA pg2 ::::::::::::::::::::");
     clearTimeout(timeOut);
     clearInterval(interval);
+    clearInterval(processBarIdRA);
+    speechRecognizerRA.abort();
+    clearAll();
     $.ajax({
         method: "POST",
         data:{
@@ -222,7 +274,7 @@ speaking.getRenderDetails = function (pageNumber,page,pageId) {
             if(json.pagination!=null && json.pagination != "" ){
                 $('.ra-pagination-div').html(json.pagination);
             }
-            var numberOfSeconds = 10,
+            var numberOfSeconds = 40,
                 display = document.querySelector('.current-status');
             startTimerForReadAloud(numberOfSeconds, display,recordTime);
         }
@@ -249,6 +301,21 @@ $(document).on('click','.reset',function () {
     speaking.getRenderDetails(pageNumber,"","");
 })
 
+
+$(document).on('click','.ra-stop-my-answer', function () {
+    console.log("Coming here :::::")
+    clearTimeout(timeOut);
+    clearInterval(interval);
+    $('.stop-ra').click();//stopped recording
+    $('.ra-control-section').show();//show the control section
+    speechRecognizerRA.abort();
+    $('.current-status').html("Completed");
+    stopProcessBarRA();
+})
+
+$(document).on('click','.logout',function () {
+    window.location = "../../jsp/logoutOCE.jsp";
+})
 
 
 

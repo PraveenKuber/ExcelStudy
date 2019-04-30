@@ -9,6 +9,15 @@ public class WriteEssay {
     private String essayQuestion;
     private String themeName;
     private List<String> suggestedPoints;
+    private String previouslyOccurred;
+
+    public String getPreviouslyOccurred() {
+        return previouslyOccurred;
+    }
+
+    public void setPreviouslyOccurred(String previouslyOccurred) {
+        this.previouslyOccurred = previouslyOccurred;
+    }
 
     public String getEssayQuestion() {
         return essayQuestion;

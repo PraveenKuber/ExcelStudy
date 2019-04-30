@@ -5501,7 +5501,8 @@ strong {
 .sidebar[data-background-color="brown"]:after, .sidebar[data-background-color="brown"]:before,
 .off-canvas-sidebar[data-background-color="brown"]:after,
 .off-canvas-sidebar[data-background-color="brown"]:before {
-  background-color: #66615b;
+  /*background-color: #66615b;*/
+  background-color: rgba(0, 128, 93, 0.78);
 }
 .sidebar[data-background-color="brown"] .user,
 .off-canvas-sidebar[data-background-color="brown"] .user {
@@ -5538,7 +5539,8 @@ strong {
 }
 .sidebar[data-background-color="brown"][data-active-color="danger"] .nav li.active > a,
 .off-canvas-sidebar[data-background-color="brown"][data-active-color="danger"] .nav li.active > a {
-  color: #ef8157;
+  /*color: #ef8157;*/
+  color:black;
   opacity: 1;
 }
 .sidebar[data-background-color="brown"] .info a,

@@ -10,6 +10,9 @@ var timeOut;
 $('.retell_lecture').click(function (event) {
     clearTimeout(timeOut);
     clearInterval(interVal);
+    clearInterval(processBarIdRL);
+    clearInterval(intervalRL1);
+    clearAll();
     /*ajax*/
     $.ajax({
         method: "POST",
@@ -21,9 +24,11 @@ $('.retell_lecture').click(function (event) {
             var recordTime = parseInt(json.recordAbleTime);
             console.log("::::::::::"+audioFileLengthJson+"::::::::::::::"+recordTime);
             $('.record-audio-retellLecture').attr('record-time',recordTime)
-            var recordStartIn = 10, display = document.querySelector('.recordCounter-retellLecture'),
+            var recordStartIn = 5, display = document.querySelector('.recordCounter-retellLecture'),
                 recordAbleTime = recordTime, audioFileLength = audioFileLengthJson;
-           startTimerForRetellLecture(recordStartIn, display, recordAbleTime, audioFileLength);
+            //startTimerForRetellLecture(recordStartIn, display, recordAbleTime, audioFileLength);
+            var displayNew =  document.querySelector('.current-status-one');
+            newRepoRL(recordStartIn,displayNew,recordAbleTime,audioFileLength);
         }
 
     });
@@ -31,7 +36,55 @@ $('.retell_lecture').click(function (event) {
 })
 
 
-function startTimerForRetellLecture(duration, display,recordAbleTime,audioFileLength) {
+
+var intervalRL1;
+function newRepoRL(duration, display,recordAbleTime,audioFileLength) {
+    var timer = duration, seconds;
+    intervalRL1 = setInterval(function () {
+        seconds = parseInt(timer % 60, 10);
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        display.textContent = "Beginning  in "+seconds;
+        if (--timer < 0) {
+            timer = duration;
+        }
+        if(seconds==0){
+            clearInterval(intervalRL1);
+            display.textContent = "Playing";
+            //play
+            //audio file will play
+            $("#retellLecture").trigger('play');
+            console.log("Playing :::::::::::")
+            processProgressBarRL(audioFileLength,"retellLecture-one",display);
+            recordBeginForRetellLecture(audioFileLength,document.querySelector('.retellLecture-status'),recordAbleTime);
+        }
+    }, 1000);
+}
+
+
+var processBarIdRL;
+function  processProgressBarRL(audioFileLength,className,querySelector) {
+    clearInterval(processBarIdRL);
+    var progressBarWidth = 0;
+    var processWidth = 103/audioFileLength;
+    processBarIdRL = setInterval(moveProcessBar,1000);
+    function moveProcessBar() {
+        if (progressBarWidth >= 103) {
+            clearInterval(processBarIdRL);
+        } else {
+            progressBarWidth = progressBarWidth + processWidth;
+            $('.'+className).css({"width":progressBarWidth+"%"})
+        }
+    }
+}
+
+function  stopProcessBarRL() {
+    clearInterval(processBarIdRL);
+}
+
+
+
+
+/*function startTimerForRetellLecture(duration, display,recordAbleTime,audioFileLength) {
     var timer = duration, seconds;
     interval = setInterval(function () {
         seconds = parseInt(timer % 60, 10);
@@ -46,7 +99,7 @@ function startTimerForRetellLecture(duration, display,recordAbleTime,audioFileLe
             clearInterval(interval);
             //play
             $("#retellLecture").trigger('play');
-            /*added 1 sec extra*/
+            /!*added 1 sec extra*!/
             audioFileLength = audioFileLength+1;
             timeOut = setTimeout(function(){
                 console.log("Start recording :::::::::::::::")
@@ -55,10 +108,10 @@ function startTimerForRetellLecture(duration, display,recordAbleTime,audioFileLe
 
         }
     }, 1000);
-}
+}*/
 
 
-function recordBeginForRetellLecture(duration, display) {
+function recordBeginForRetellLecture(duration, display,recordAbleTime) {
     var timer = duration, seconds;
     interval = setInterval(function () {
         seconds = parseInt(timer % 60, 10);
@@ -70,18 +123,18 @@ function recordBeginForRetellLecture(duration, display) {
         console.log("Coming :::::::::::")
         if(seconds==0){
             clearInterval(interval);
-            $('.retellLecture-status').text("completed");
-
-
+            $('.retellLecture-status').text("In Progress");
            /* Record will start here*/
-              $('.record-retellLecture').click();
-
+            $('.record-retellLecture').click();
             $(".loader").trigger('play');
-            $('.retellLecture').delay(1000).queue(function () {
+
+
+           /* $('.retellLecture').delay(1000).queue(function () {
                 $(this).css("transition","width "+duration+"s ease-in-out");
                 $(this).css('width', '103%')
-            });
+            });*/
 
+            processProgressBarNewRL(recordAbleTime);
             /*Record will stop after given point of time*/
             
            timeOut = setTimeout(function () {
@@ -89,13 +142,53 @@ function recordBeginForRetellLecture(duration, display) {
                 $('.audio-compare-rl').click();
                 $('.rl-alertMessage').show();
                 $('.footer-div').show();
-
-            },(duration*1000));
+               $('.retellLecture-status').text("Completed");
+            },(recordAbleTime*1000));
 
             /*Stopped*/
         }
     }, 1000);
 }
+
+
+/*New changes */
+
+
+var processBarIdNewRL;
+function  processProgressBarNewRL(recordableTime) {
+    console.log("Coming for final RL ::::::::::::::::::");
+    var progressBarWidth = 0;
+    var processWidth = 103/recordableTime;
+    processBarIdNewRL = setInterval(moveProcessBar,1000);
+    function moveProcessBar() {
+        if (progressBarWidth >= 103) {
+            clearInterval(processBarIdNewRL);
+        } else {
+            progressBarWidth = progressBarWidth + processWidth;
+            $('.retellLecture').css({"width":progressBarWidth+"%"})
+        }
+    }
+}
+
+function  stopProcessProgressBarNewRL() {
+    clearInterval(processBarIdNewRL);
+    clearTimeout(timeOut);
+    clearInterval(interval);
+    $('#stop').click(); //stop audio record
+    $('.stop-retellLecture').click(); // stop speech 
+    $('.stop-audio-retellLecture').click();
+    $('.footer-div').show();
+}
+
+
+
+
+$(document).on('click', ".rl-stop-my-answer", function () {
+    stopProcessProgressBarNewRL();
+    $('.retellLecture-status').html("Completed");
+});
+
+/*End*/
 
 
 
@@ -193,6 +286,9 @@ relTellLecture.getRenderDetails = function (pageNumber,page,pageId) {
     console.log("Clicked here RL pg2 ::::::::::::::::::::");
     clearTimeout(timeOut);
     clearInterval(interval);
+    clearInterval(processBarIdRL);
+    clearInterval(intervalRL1);
+    clearAll();
     $.ajax({
         method: "POST",
         data:{
@@ -215,9 +311,11 @@ relTellLecture.getRenderDetails = function (pageNumber,page,pageId) {
                 $('.pagination-div').html(json.pagination);
             }
             console.log("")
-            var recordStartIn = 10,display = document.querySelector('.recordCounter-retellLecture'),recordAbleTime=recordTime,
+            var recordStartIn = 5,display = document.querySelector('.recordCounter-retellLecture'),recordAbleTime=recordTime,
                 audioFileLength=audioFileLengthJson;
-            startTimerForRetellLecture(recordStartIn,display,recordAbleTime,audioFileLength);
+            //startTimerForRetellLecture(recordStartIn,display,recordAbleTime,audioFileLength);
+            var displayNew =  document.querySelector('.current-status-one');
+            newRepoRL(recordStartIn,displayNew,recordAbleTime,audioFileLength);
         }
     })
 }

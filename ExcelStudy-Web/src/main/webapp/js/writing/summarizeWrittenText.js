@@ -6,9 +6,11 @@
 var summarizeWrittenText = {};
 var interval ;
 var timeOut;
+var numberOfMinutesSWT = 10;
 
 
 $('.summarizeWrittenText').click(function (event) {
+    clearAll();
     clearInterval(interval);
     clearTimeout(timeOut);
     /*ajax*/
@@ -19,8 +21,8 @@ $('.summarizeWrittenText').click(function (event) {
             var json = JSON.parse(data.trim());
             $('.main-panel').html(json.details);
             var display = document.querySelector('.time-counter-content');
-            var numberOfMinutes = 1;
-            recordBeginForSummarizeSpokenText(numberOfMinutes,display);
+            
+            recordBeginForSummarizeSpokenText(numberOfMinutesSWT,display);
         }
 
     });
@@ -50,15 +52,19 @@ function recordBeginForSummarizeSpokenText(duration, display) {
         var distance = next - now;
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        var displaySec = seconds;
         if(seconds<10){
-            seconds = "0"+seconds;
+            displaySec = "0"+displaySec;
         }
-        display.textContent = minutes+":"+seconds;
+        if(minutes >-1 && seconds > -1) display.textContent = minutes+":"+displaySec;
         if (distance < 0) {
-            if(seconds==0){
+            if(seconds == 0 || seconds < 0){
                 clearInterval(interval);
+                $('.summarizeTextDescription-output').prop("readonly",true);
+                $('.swt-check-answer').click();
                 $('.swt-alertMessage').show();
-                $('.swt-answer-analysis').show();
+                //$('.swt-answer-analysis').show();
+                $('.swt-control').css({"visibility":"visible"});
             }
         }
     }, 1000);
@@ -83,9 +89,11 @@ $(document).on('click','.swt-check-answer',function () {
 
 
 $(document).on('click','.swt-save-my-answer',function () {
+    var question  = $('.summarizeTextDescription').html();
     var textToWrite = $('.summarizeTextDescription-output').val();
+    textToWrite = question + "\n\n\n\n" + textToWrite 
     var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
-    var fileNameToSaveAs = "OCE-Summarize_Written_text";
+    var fileNameToSaveAs = "OCE-Summarize_Written_Text";
 
     var downloadLink = document.createElement("a");
     downloadLink.download = fileNameToSaveAs;
@@ -106,6 +114,8 @@ $(document).on('click','.swt-save-my-answer',function () {
 $(document).on('click','.swt-stop-my-answer', function () {
      clearInterval(interval);
      $('.summarizeTextDescription-output').prop("readonly",true);
+     $('.swt-check-answer').click();
+     $('.swt-control').css({"visibility":"visible"});
 })
 
 
@@ -126,6 +136,7 @@ summarizeWrittenText.getRenderDetails = function (pageNumber,page,pageId) {
     console.log("Clicked here SWT pg2 ::::::::::::::::::::"+pageNumber+":::page :::"+page+":::::page id ::"+pageId);
     clearTimeout(timeOut);
     clearInterval(interval);
+    clearAll();
     $.ajax({
         method: "POST",
         data:{
@@ -141,8 +152,7 @@ summarizeWrittenText.getRenderDetails = function (pageNumber,page,pageId) {
                 $('.swt-pagination-div').html(json.pagination);
             }
             var display = document.querySelector('.time-counter-content');
-            var numberOfMinutes = 1;
-            recordBeginForSummarizeSpokenText(numberOfMinutes,display);
+            recordBeginForSummarizeSpokenText(numberOfMinutesSWT,display);
 
         }
     })
@@ -158,7 +168,7 @@ $(document).on('click','.swt-next',function () {
 
 $(document).on('click','.swt-previous',function () {
     var pageId = $(this).attr('data-page-id');
-    var page = $('.swt-next').attr('data-page');
+    var page = $('.swt-previous').attr('data-page');
     summarizeWrittenText.getRenderDetails("",page,pageId);
 })
 

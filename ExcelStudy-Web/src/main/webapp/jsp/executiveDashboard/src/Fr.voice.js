@@ -141,7 +141,6 @@
 
 		exportMP3: function(callback, type){
 			console.log("Calling to export mp3::")
-			
 			this.recorder.exportMP3(function(blob){
 				console.log("Calling to export mp3::1::::::;")
 				Fr.voice.callExportCallback(blob, callback, type);

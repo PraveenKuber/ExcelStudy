@@ -1,6 +1,5 @@
 package com.EStudy.manager;
 
-import com.EStudy.config.Config;
 import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -8,7 +7,10 @@ import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
 import org.omg.CORBA.portable.ApplicationException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 ;
 
@@ -28,13 +30,15 @@ public class MongoPersistenceManager {
 
 
     private MongoPersistenceManager() {
-        Config config = Config.getInstance();
-       /* try {
+        /*Config config = Config.getInstance();
+        try {
             this.username = config.getConfig("estudy.mongodb.username");
             this.password = config.getConfig("estudy.mongodb.password");
             this.dbName = config.getConfig("estudy.mongodb.dbName");
             this.ipAddress = config.getConfig("estudy.mongodb.ip");
             this.port = Integer.parseInt(config.getConfig("estudy.mongodb.port"));
+
+
             MongoCredential mongoCredential = MongoCredential.createCredential(username, dbName, password.toCharArray());
 
             //Added recent by Hemanth to ensure DB connection is not lost even during idle time.

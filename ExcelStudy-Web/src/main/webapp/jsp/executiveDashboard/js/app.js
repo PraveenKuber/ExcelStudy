@@ -105,10 +105,12 @@ $(document).ready(function(){
       
       xValue = parseInt(xValue*1000);  
       console.log("Calling :::::::::"+xValue);
-    Fr.voice.stopRecordingAfter(xValue, function(){
-      $('.stop').click();
+       Fr.voice.stopRecordingAfter(xValue, function(){
+        $('.stop-ra').click();
     });
   });
+
+  
 
 
   
@@ -141,11 +143,18 @@ $(document).ready(function(){
     restore();
   });
 
+  $(document).on("click", "#stop", function(){
+    console.log("Clicked ::::::::");
+    restore();
+  });
+
+  
   $(document).on("click", "#play", function(){
     console.log("Clicked ::::::::::")
     $('#audio').show();
     $('#audio').css({"display":"block"});
     $("#play").css({"pointer-events":"none","cursor":"not-allowed"});
+    $('.loader').css({"visibility":"visible"});
     if($(this).parent().data("type") === "mp3"){
       Fr.voice.exportMP3(function(url){
         $("#audio").attr("src", url);
@@ -250,12 +259,14 @@ $(document).on("click", ".di-recorded-play", function(){
   $("#di-audio").css({"display":"block"});
   /*,"pointer-events":"none"*/
   $('.di-recorded-play').css({"pointer-events":"none","cursor":"not-allowed"});
+  $('.loader').css({"visibility":"visible"});
     Fr.voice.exportMP3(function(url){
       $("#di-audio").attr("src", url);
       $("#di-audio")[0].play();
     }, "URL");
   restore();
 });
+
 
 $(document).on("click", ".di-recorded-download", function(){
     Fr.voice.exportMP3(function(url){
@@ -282,11 +293,12 @@ $(document).on("click", ".record-audio-retellLecture", function(){
   });
   /*Stop*/
   Fr.voice.stopRecordingAfter(xValue, function(){
-    console.log("Stopped in RL :::::")
-    $('.rl-alertMessage').show();
+    console.log("Stopped in RL :::::");
     $('.stop-audio-retellLecture').click();
   });
 });
+
+
 
 
 
@@ -295,6 +307,7 @@ $(document).on("click", ".rl-play", function(){
   $("#recorded-retellLecture").css({"display":"block"});
   /*,"pointer-events":"none"*/
   $('.rl-play').css({"pointer-events":"none","cursor":"not-allowed"})
+  $('.loader').css({"visibility":"visible"});
   Fr.voice.exportMP3(function(url){
     $("#recorded-retellLecture").attr("src", url);
     $("#recorded-retellLecture")[0].play();

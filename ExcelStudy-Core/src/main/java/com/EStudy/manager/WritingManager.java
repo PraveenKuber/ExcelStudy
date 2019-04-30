@@ -37,6 +37,7 @@ public class WritingManager {
             summarizeWrittenText.setSampleAnswerContent(dbObject.get("sampleAnswerContent").toString());
             suggestionList = (List) dbObject.get("suggestedPoints");
             summarizeWrittenText.setSuggestedPoints(suggestionList);
+            summarizeWrittenText.setPreviouslyOccurred(dbObject.get("previouslyOccurred").toString());
         }
         return summarizeWrittenText;
     }
@@ -53,6 +54,7 @@ public class WritingManager {
             writeEssay.setThemeName(dbObject.get("themeName").toString());
             suggestionList = (List) dbObject.get("suggestedPoints");
             writeEssay.setSuggestedPoints(suggestionList);
+            writeEssay.setPreviouslyOccurred(dbObject.get("previouslyOccurred").toString());
         }
         return writeEssay;
     }

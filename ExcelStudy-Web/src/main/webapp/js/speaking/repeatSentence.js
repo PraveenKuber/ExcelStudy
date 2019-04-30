@@ -4,6 +4,7 @@
 
 
 var repeatSentence = {};
+var speechRecognizerRS = new webkitSpeechRecognition();
 
 var interval;
 var timeOut;
@@ -11,6 +12,9 @@ var timeOut;
 $('.repeat_sentence').click(function (event) {
     clearInterval(interval);
     clearTimeout(timeOut);
+    clearInterval(interval1);
+    clearInterval(processBarIdRS);
+    clearAll();
     /*ajax*/
     $.ajax({
         method: "POST",
@@ -24,43 +28,74 @@ $('.repeat_sentence').click(function (event) {
             var audioFileLengthJson = parseInt(json.audioFileLength);
             var recordTime = parseInt(json.recordableTime);
             
-            var recordStartIn = 10,display = document.querySelector('.recordCounter'),recordAbleTime=recordTime,
+            var recordStartIn = 5,display = document.querySelector('.recordCounter'),recordAbleTime=recordTime,
                 audioFileLength=audioFileLengthJson;
-            startTimerForRepeatSentence(recordStartIn,display,recordAbleTime,audioFileLength);
+            //startTimerForRepeatSentence(recordStartIn,display,recordAbleTime,audioFileLength);
+            var displayNew = document.querySelector('.current-status-one');
+            newRepoRE(recordStartIn,displayNew,recordAbleTime,audioFileLength);
         }
 
     });
 
-})
+});
 
 
+/*New changes */
 
-function startTimerForRepeatSentence(duration, display,recordAbleTime,audioFileLength) {
+
+var interval1;
+function newRepoRE(duration, display,recordAbleTime,audioFileLength) {
     var timer = duration, seconds;
-    interval = setInterval(function () {
+    interval1 = setInterval(function () {
         seconds = parseInt(timer % 60, 10);
         seconds = seconds < 10 ? "0" + seconds : seconds;
-        display.textContent = "Record will begin in "+seconds;
+        display.textContent = "Beginning  in "+seconds;
         if (--timer < 0) {
             timer = duration;
         }
         if(seconds==0){
-            clearInterval(interval);
+            clearInterval(interval1);
+            display.textContent = "Playing";
             //play
+            //audio file will play
             $("#repeat-sentence").trigger('play');
-            
-            /*added 1 sec extra*/
-            audioFileLength = audioFileLength+1;
-           timeOut =  setTimeout(function(){
-                recordBeginForRepeatSenetnce(recordAbleTime,document.querySelector('.repeat-sentence-status'));
-            },(audioFileLength*1000));
-            
+            console.log("Playing :::::::::::")
+            processProgressBarRE(audioFileLength,"repeatSentence-one",display);
+            recordBeginForRepeatSenetnce(audioFileLength,document.querySelector('.repeat-sentence-status'),recordAbleTime);
         }
     }, 1000);
 }
 
 
-function recordBeginForRepeatSenetnce(duration, display) {
+var processBarIdRS;
+function  processProgressBarRE(audioFileLength,className,querySelector) {
+    clearInterval(processBarIdRS);
+    console.log("Playing inside :::::::::::recordableTime:::::::"+audioFileLength)
+    console.log("Coming for RE ::::::::::::::::");
+    var progressBarWidth = 0;
+    var processWidth = 103/audioFileLength;
+    processBarIdRS = setInterval(moveProcessBar,1000);
+    function moveProcessBar() {
+        if (progressBarWidth >= 103) {
+            querySelector.textContent = "Completed";
+            clearInterval(processBarIdRS);
+        } else {
+            progressBarWidth = progressBarWidth + processWidth;
+            $('.'+className).css({"width":progressBarWidth+"%"})
+        }
+    }
+}
+
+function  stopProcessBarRE() {
+    clearInterval(processBarIdRS);
+}
+
+
+/*End*/
+
+
+function recordBeginForRepeatSenetnce(duration, display,recordAbleTime) {
+    console.log("Recordable time :::::"+duration)
     var timer = duration, seconds;
     interval = setInterval(function () {
         seconds = parseInt(timer % 60, 10);
@@ -71,29 +106,62 @@ function recordBeginForRepeatSenetnce(duration, display) {
         }
         if(seconds==0){
             clearInterval(interval);
-            $('.repeat-sentence-status').text("completed");
+            $('.repeat-sentence-status').text("In progress");
             /*Record will start here*/
             $('.record-repeat-sentence').click();
 
             $(".loader").trigger('play');
-            $('.repeatSentence').delay(1000).queue(function () {
-                $(this).css("transition","width "+duration+"s ease-in-out");
-                $(this).css('width', '103%')
-            });
-
+            processProgressBarNewRS(recordAbleTime);
             /*Record will stop after given point of time*/
            timeOut =  setTimeout(function () {
                 $('.stop-repeat-sentence').click();
                 $('.rp-alertMessage').show();
                 $('.repeatSentence-footer-div').show();
                 
-            },(duration*1000));
+            },(recordAbleTime*1000));
+
         }
     }, 1000);
 }
 
 
-var speechRecognizerRS = new webkitSpeechRecognition();
+
+/*New changes */
+
+
+var processBarIdNew;
+function  processProgressBarNewRS(recordableTime) {
+    console.log("Coming for final ::::::::::::::::::");
+    var progressBarWidth = 0;
+    var processWidth = 103/recordableTime;
+    processBarIdNew = setInterval(moveProcessBar,1000);
+    function moveProcessBar() {
+        $('.repeat-sentence-status').text("Completed");
+        if (progressBarWidth >= 103) {
+            clearInterval(processBarIdNew);
+        } else {
+            $('.repeat-sentence-status').text("In progress");
+            progressBarWidth = progressBarWidth + processWidth;
+            $('.repeatSentence').css({"width":progressBarWidth+"%"})
+        }
+    }
+}
+
+function  stopProcessProgressBarNewRS() {
+    clearInterval(processBarIdNew);
+    clearTimeout(timeOut);
+    $('.stop-repeat-sentence').click();
+    $('.repeatSentence-footer-div').show();
+}
+
+$(document).on('click', ".re-stop-my-answer", function () {
+    stopProcessProgressBarNewRS();
+    $('.repeat-sentence-status').html("Completed");
+});
+
+/*End*/
+
+
 
 
 $(document).on("click", ".record-repeat-sentence", function () {
@@ -202,6 +270,8 @@ repeatSentence.getRenderDetails = function (pageNumber,page,pageId) {
     console.log("Clicked here RP pg2 ::::::::::::::::::::");
     clearTimeout(timeOut);
     clearInterval(interval);
+    clearInterval(processBarIdRS);
+    clearAll();
     $.ajax({
         method: "POST",
         data:{
@@ -218,9 +288,13 @@ repeatSentence.getRenderDetails = function (pageNumber,page,pageId) {
             }
             var audioFileLengthJson = parseInt(json.audioFileLength);
             var recordTime = parseInt(json.recordableTime);
-            var recordStartIn = 10,display = document.querySelector('.recordCounter'),recordAbleTime=recordTime,
+            var recordStartIn = 5,display = document.querySelector('.recordCounter'),recordAbleTime=recordTime,
                 audioFileLength=audioFileLengthJson;
-            startTimerForRepeatSentence(recordStartIn,display,recordAbleTime,audioFileLength);
+            //startTimerForRepeatSentence(recordStartIn,display,recordAbleTime,audioFileLength);
+
+            var displayNew = document.querySelector('.current-status-one');
+            newRepoRE(recordStartIn,displayNew,recordAbleTime,audioFileLength);
+            //startTimerForRepeatSentence(recordStartIn,display,recordAbleTime,audioFileLength);
 
         }
     })
@@ -236,7 +310,7 @@ $(document).on('click','.rp-next',function () {
 
 $(document).on('click','.rp-previous',function () {
     var pageId = $(this).attr('data-page-id');
-    var page = $('.rp-next').attr('data-page');
+    var page = $('.rp-previous').attr('data-page');
     repeatSentence.getRenderDetails("",page,pageId);
 })
 
@@ -247,6 +321,31 @@ $(document).on('click','.rp-try-again',function () {
 })
 
 
+
+/*function startTimerForRepeatSentence(duration, display,recordAbleTime,audioFileLength) {
+ var timer = duration, seconds;
+ interval = setInterval(function () {
+ seconds = parseInt(timer % 60, 10);
+ seconds = seconds < 10 ? "0" + seconds : seconds;
+ display.textContent = "Record will begin in "+seconds;
+ if (--timer < 0) {
+ timer = duration;
+ }
+ if(seconds==0){
+ clearInterval(interval);
+ //play
+ $("#repeat-sentence").trigger('play');
+
+ /!*added 1 sec extra*!/
+ audioFileLength = audioFileLength+1;
+ timeOut =  setTimeout(function(){
+ recordBeginForRepeatSenetnce(audioFileLength,document.querySelector('.repeat-sentence-status'));
+ },(audioFileLength*1000));
+ /!*changed here take care*!/
+
+ }
+ }, 1000);
+ }*/
 
 
 

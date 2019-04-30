@@ -73,6 +73,10 @@
     StringBuilder stringBuilder = new StringBuilder();
     Gson gson = new Gson();
     JsonObject jsonObject = new JsonObject();
+    String previouslyOccurred = "-";
+    if(repeatSentence.getPreviouslyOccurred()!=null && !repeatSentence.getPreviouslyOccurred().isEmpty()){
+        previouslyOccurred = repeatSentence.getPreviouslyOccurred();
+    }
 
     /*start*/
 
@@ -82,6 +86,20 @@
     stringBuilder.append("<div class=\"module-description\">");
     stringBuilder.append("You will hear a sentence. Please repeat the sentence exactly as you hear it." +
             "You will hear the sentence only once.");
+    stringBuilder.append("</div>");
+
+    stringBuilder.append("<div class=\"repeated-question\">Previously repeated :");
+    stringBuilder.append("<div class=\"repeated-question-number\">"+previouslyOccurred+"</div>");
+    stringBuilder.append("</div>");
+
+    stringBuilder.append("<div class=\"status-div-one\">");
+    stringBuilder.append("<div class=\"status-header-one\"></div>");
+    stringBuilder.append("<div class=\"current-status-header-one\">Current status:</div>");
+    stringBuilder.append("<div class=\"current-status-one repeat-sentence-status-one\">completed</div>");
+    stringBuilder.append("<div class=\"status-bar-one repeat-sentence-status-bar\"></div>");
+    stringBuilder.append("<div class=\"progress-bar-one\">");
+    stringBuilder.append("<span class=\"repeatSentence-one\"></span>");
+    stringBuilder.append("</div>");
     stringBuilder.append("</div>");
 
     stringBuilder.append("<div class=\"recordCounter\"></div>");
@@ -133,6 +151,8 @@
     stringBuilder.append("<div  class=\"word-compare-content\"></div>");
     stringBuilder.append("</div>");
     stringBuilder.append("</div>");
+
+    stringBuilder.append("<div class=\"common-stop-button re-stop-my-answer\">Stop</div>");
 
     stringBuilder.append("</div>");
 

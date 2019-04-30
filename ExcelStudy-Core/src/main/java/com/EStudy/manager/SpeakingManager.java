@@ -46,6 +46,7 @@ public class SpeakingManager {
             shortQuestion.setAudioScriptAnswer(dbObject.get("audioScriptAnswer").toString());
             shortQuestion.setAudioFileLength(dbObject.get("audioFileLength").toString());
             shortQuestion.setRecordableTime(dbObject.get("recordableTime").toString());
+            shortQuestion.setPreviouslyOccurred(dbObject.get("previouslyOccurred").toString());
             ShortQuestionList.add(shortQuestion);
         }
         return ShortQuestionList;
@@ -63,6 +64,7 @@ public class SpeakingManager {
             shortQuestion.setAudioScriptAnswer(dbObject.get("audioScriptAnswer").toString());
             shortQuestion.setAudioFileLength(dbObject.get("audioFileLength").toString());
             shortQuestion.setRecordableTime(dbObject.get("recordableTime").toString());
+            shortQuestion.setPreviouslyOccurred(dbObject.get("previouslyOccurred").toString());
         }
         return shortQuestion;
     }
@@ -79,6 +81,7 @@ public class SpeakingManager {
             retellLecture.setAudioScript(dbObject.get("audioScript").toString());
             retellLecture.setAudioFileLength(dbObject.get("audioFileLength").toString());
             retellLecture.setRecordableTime(dbObject.get("recordableTime").toString());
+            retellLecture.setPreviouslyOccurred(dbObject.get("previouslyOccurred").toString());
         }
         return retellLecture;
     }
@@ -93,6 +96,7 @@ public class SpeakingManager {
             dbObject = dbCursor.next();
             describeImage.setImagePath(dbObject.get("imagePath").toString());
             describeImage.setRecordableTime(dbObject.get("recordableTime").toString());
+            describeImage.setPreviouslyOccurred(dbObject.get("previouslyOccurred").toString());
         }
         return describeImage;
     }
@@ -108,6 +112,7 @@ public class SpeakingManager {
             repeatSentence.setAudioPath(dbObject.get("audioPath").toString());
             repeatSentence.setAudioFileLength(dbObject.get("audioFileLength").toString());
             repeatSentence.setRecordableTime(dbObject.get("recordableTime").toString());
+            repeatSentence.setPreviouslyOccurred(dbObject.get("previouslyOccurred").toString());
         }
         return repeatSentence;
     }
@@ -122,6 +127,7 @@ public class SpeakingManager {
             dbObject = dbCursor.next();
             readAloud.setAudioScript(dbObject.get("audioScript").toString());
             readAloud.setRecordableLength(dbObject.get("recordableLength").toString());
+            readAloud.setPreviouslyOccurred(dbObject.get("previouslyOccurred").toString());
         }
         return readAloud;
     }

@@ -13,7 +13,7 @@ xmlhttp.readyState == 4 &&
            
 function checkExist()
 {
-var xmlhttp;
+/*var xmlhttp;
 var username=document.forms["userCreateForm"]["loginid"].value;
 var urls="isExist.jsp?username="+username;
  
@@ -185,7 +185,7 @@ xmlhttp.send();
                         
                 else {
                     return true;
-                }
+                }*/
         }
 		      
 

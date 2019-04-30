@@ -74,13 +74,22 @@
     Gson gson = new Gson();
     JsonObject jsonObject = new JsonObject();
 
+    String previouslyOccurred = "-";
+    if(readAloud.getPreviouslyOccurred()!=null && !readAloud.getPreviouslyOccurred().isEmpty()){
+        previouslyOccurred = readAloud.getPreviouslyOccurred();
+    }
+
 
     stringBuilder.append("<div class=\"ra-render-div\">");
 
     stringBuilder.append("<div class=\"header-data\">Summarize spoken text </div>");
     stringBuilder.append("<div class=\"difficulty-level\"></div>");
     stringBuilder.append("<div class=\"module-description\">");
-    stringBuilder.append(" Look at the text below. In 40 seconds, you must read this text aloud as naturally and clearly as possible. You have 40 seconds to read aloud.");
+    stringBuilder.append(" Look at the text below. In "+readAloud.getRecordableLength()+"seconds, you must read this text aloud as naturally and clearly as possible. You have "+readAloud.getRecordableLength()+" seconds to read aloud.");
+    stringBuilder.append("</div>");
+
+    stringBuilder.append("<div class=\"repeated-question\">Previously repeated :");
+    stringBuilder.append("<div class=\"repeated-question-number\">"+previouslyOccurred+"</div>");
     stringBuilder.append("</div>");
 
     stringBuilder.append("<div class=\"status-div\">");
@@ -111,6 +120,7 @@
     stringBuilder.append("<div class=\"recordingArea\">");
     stringBuilder.append("<a class=\"button recordButton\" id=\"recordForX\" data-number-of-seconds="+readAloud.getRecordableLength()+">Record For x Seconds</a>");
     stringBuilder.append("</div>");
+    stringBuilder.append("<div class=\"loader\"><img class=\"loader-image\" src=\"../../images/loder.gif\"></div>");
 
 
     stringBuilder.append("<div class=\"ra-control-section\">");
@@ -128,7 +138,7 @@
     stringBuilder.append("<div class=\"ra-compare-module\">");
     stringBuilder.append("<span class=\"answer-analysis\">Answer analysis:</span>");
     stringBuilder.append("<span class=\"close-analysis-ra\">x</span>");
-    stringBuilder.append("<div class=\"audio-script audio-script-ra\"");
+    stringBuilder.append("<div class=\"audio-script audio-script-ra\">");
     stringBuilder.append("<span class=\"audio-script-header\">your answer:</span>");
     stringBuilder.append("<div  class=\"audio-script- speechToTextArea\"></div>");
     stringBuilder.append("</div>");
@@ -137,6 +147,9 @@
     stringBuilder.append("<div  class=\"word-compare-content compare-section\"></div>");
     stringBuilder.append("</div>");
     stringBuilder.append("</div>");
+
+    stringBuilder.append("<div class=\"common-stop-button ra-stop-my-answer\">Stop</div>");
+
     stringBuilder.append("</div>");
 
 

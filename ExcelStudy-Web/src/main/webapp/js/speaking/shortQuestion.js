@@ -17,6 +17,9 @@ var timeOut;
 $('.short-question').click(function (event) {
     clearInterval(interval);
     clearTimeout(timeOut);
+    clearInterval(processBarIdNewSQ);
+    clearInterval(interval1ForSQ);
+    clearAll();
     /*ajax*/
     $.ajax({
         method: "POST",
@@ -28,9 +31,12 @@ $('.short-question').click(function (event) {
             var recordTime = parseInt(json.recordAbleTime);
             console.log(":::::::::"+recordTime+":::::::::::"+audioFileLengthJson)
             $('.main-panel').html(json.details);
-            var recordStartIn = 10,display = document.querySelector('.recordCounter-sq'),recordAbleTime=recordTime,
+            var recordStartIn = 5,display = document.querySelector('.recordCounter-sq'),recordAbleTime=recordTime,
                 audioFileLength=audioFileLengthJson;
-            startTimerForShortQuestion(recordStartIn,display,recordAbleTime,audioFileLength);
+            //startTimerForShortQuestion(recordStartIn,display,recordAbleTime,audioFileLength);
+            var displayNew = document.querySelector('.current-status-one');
+            newRepoSQ(recordStartIn,displayNew,recordAbleTime,audioFileLength);
+
             
         }
 
@@ -38,6 +44,55 @@ $('.short-question').click(function (event) {
 
 })
 
+
+
+
+
+var interval1ForSQ;
+function newRepoSQ(duration, display,recordAbleTime,audioFileLength) {
+    var timer = duration, seconds;
+    interval1ForSQ = setInterval(function () {
+        seconds = parseInt(timer % 60, 10);
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        display.textContent = "Beginning  in "+seconds;
+        if (--timer < 0) {
+            timer = duration;
+        }
+        if(seconds==0){
+            clearInterval(interval1ForSQ);
+            display.textContent = "Playing";
+            //play
+            //audio file will play
+            $("#short-question").trigger('play');
+            console.log("Playing :::::::::::")
+            processProgressBarSQ(audioFileLength,"shortQuestion-one",display);
+            recordBeginForShortQuestion(audioFileLength,document.querySelector('.short-question-status'),recordAbleTime);
+        }
+    }, 1000);
+}
+
+
+var processBarIdSQ;
+function  processProgressBarSQ(audioFileLength,className,querySelector) {
+    clearInterval(processBarIdSQ);
+    console.log("Coming for SQ ::::::::::::::::");
+    var progressBarWidth = 0;
+    var processWidth = 103/audioFileLength;
+    processBarIdSQ = setInterval(moveProcessBar,1000);
+    function moveProcessBar() {
+        if (progressBarWidth >= 103) {
+            querySelector.textContent = "Completed";
+            clearInterval(processBarIdSQ);
+        } else {
+            progressBarWidth = progressBarWidth + processWidth;
+            $('.'+className).css({"width":progressBarWidth+"%"})
+        }
+    }
+}
+
+function  stopProcessBarRE() {
+    clearInterval(processBarIdSQ);
+}
 
 
 function startTimerForShortQuestion(duration, display,recordAbleTime,audioFileLength) {
@@ -68,7 +123,7 @@ function startTimerForShortQuestion(duration, display,recordAbleTime,audioFileLe
 }
 
 
-function recordBeginForShortQuestion(duration, display) {
+function recordBeginForShortQuestion(duration, display,recordAbleTime) {
     var timer = duration, seconds;
      interval = setInterval(function () {
         seconds = parseInt(timer % 60, 10);
@@ -81,27 +136,61 @@ function recordBeginForShortQuestion(duration, display) {
         if(seconds==0){
             clearInterval(interval);
 
-            $('.short-question-status').text("completed");
+            $('.short-question-status').text("In Progress");
 
             /*Record will start here*/
             $('.record-short-question').click();
-
-
             $(".loader").trigger('play');
-            
-            $('.shortQuestion').delay(1000).queue(function () {
+
+
+            /*$('.shortQuestion').delay(1000).queue(function () {
                 $(this).css("transition","width "+duration+"s ease-in-out");
                 $(this).css('width', '103%')
-            });
+            });*/
 
+            processProgressBarNewSQ(recordAbleTime);
             /*Record will stop after given point of time*/
             timeOut = setTimeout(function () {
                 $('.stop-short-question').click();
                 $('.footer-div,.sq-compare-module,.sq-alertMessage').show();
-            },(duration*1000));
+                $('.short-question-status').text("Completed");
+            },(recordAbleTime*1000));
         }
     }, 1000);
 }
+
+
+/*New changes */
+
+
+var processBarIdNewSQ;
+function  processProgressBarNewSQ(recordableTime) {
+    var progressBarWidth = 0;
+    var processWidth = 103/recordableTime;
+    processBarIdNewSQ = setInterval(moveProcessBar,1000);
+    function moveProcessBar() {
+        if (progressBarWidth >= 103) {
+            clearInterval(processBarIdNewSQ);
+        } else {
+            progressBarWidth = progressBarWidth + processWidth;
+            $('.shortQuestion').css({"width":progressBarWidth+"%"})
+        }
+    }
+}
+
+function  stopProcessProgressBarNewSQ() {
+    clearInterval(processBarIdNewSQ);
+    clearTimeout(timeOut);
+    $('.stop-short-question').click();
+    $('.footer-div,.sq-compare-module').show();
+}
+
+$(document).on('click', ".sq-stop-my-answer", function () {
+    stopProcessProgressBarNewSQ();
+    $('.short-question-status').text("Completed");
+});
+
+/*End*/
 
 
 var speechRecognizerRS = new webkitSpeechRecognition();
@@ -177,8 +266,11 @@ $(document).on('click','.common-pagination',function () {
 })
 
 shortQuestion.getRenderDetails = function (pageNumber,page,pageId) {
-    clearTimeout(timeOut);
     clearInterval(interval);
+    clearTimeout(timeOut);
+    clearInterval(processBarIdNewSQ);
+    clearInterval(interval1ForSQ);
+    clearAll();
    $.ajax({
        method: "POST",
        data:{
@@ -197,9 +289,11 @@ shortQuestion.getRenderDetails = function (pageNumber,page,pageId) {
            if(json.pagination!=null && json.pagination != "" ){
                $('.pagination-div').html(json.pagination);
            }
-           var recordStartIn = 10,display = document.querySelector('.recordCounter-sq'),recordAbleTime=recordTime,
+           var recordStartIn = 5,display = document.querySelector('.recordCounter-sq'),recordAbleTime=recordTime,
                audioFileLength=audioFileLengthJson;
-           startTimerForShortQuestion(recordStartIn,display,recordAbleTime,audioFileLength);
+           //startTimerForShortQuestion(recordStartIn,display,recordAbleTime,audioFileLength);
+           var displayNew = document.querySelector('.current-status-one');
+           newRepoSQ(recordStartIn,displayNew,recordAbleTime,audioFileLength);
        }
    })
 }

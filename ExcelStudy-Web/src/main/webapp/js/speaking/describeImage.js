@@ -10,6 +10,8 @@ var timeOut;
 $('.describe_image').click(function (event) {
     clearInterval(interval);
     clearTimeout(timeOut);
+    clearInterval(processBarId);
+    clearAll();
     /*ajax*/
     $.ajax({
         method: "POST",
@@ -17,9 +19,9 @@ $('.describe_image').click(function (event) {
         success: function (data) {
             var json = JSON.parse(data.trim());
             $('.main-panel').html(json.details);
-            /*var descriptionTime = 40*/
+            //var descriptionTime = 400
             var descriptionTime = $('.record-di').attr('data-record-time');
-            var numberOfSeconds = 10,
+            var numberOfSeconds = 5,
                 display = document.querySelector('.di-status');
             startTimerForDescribeImage(numberOfSeconds, display,descriptionTime);
         }
@@ -40,17 +42,18 @@ function startTimerForDescribeImage(duration, display,descriptionTime) {
         }
         if(seconds==0){
             clearInterval(interval);
-            $('.di-status').text("completed");
+            $('.di-status').text("In progress");
 
             /*Recording initiation*/
             $('.record-di').click();
 
             $(".loader").trigger('play');
             
-            $('.describeImage').delay(1000).queue(function () {
+           /* $('.describeImage').delay(1000).queue(function () {
                 $(this).css("transition","width "+descriptionTime+"s ease-in-out");
                 $(this).css('width', '103%')
-            });
+            });*/
+            processProgressBar(descriptionTime);
 
             /*Show div after things done*/
             timeOut = setTimeout(function () {
@@ -63,11 +66,55 @@ function startTimerForDescribeImage(duration, display,descriptionTime) {
     }, 1000);
 }
 
+/*New changes */
+
+
+var processBarId;
+function  processProgressBar(recordableTime) {
+    console.log("Coming for DI ::::::::::::::::");
+    var progressBarWidth = 0;
+    var processWidth = 103/recordableTime;
+    processBarId = setInterval(moveProcessBar,1000);
+    function moveProcessBar() {
+        if (progressBarWidth >= 103) {
+            $('.di-status').text("Completed");
+            clearInterval(processBarId);
+        } else {
+            $('.di-status').text("In progress");
+            progressBarWidth = progressBarWidth + processWidth;
+            $('.describeImage').css({"width":progressBarWidth+"%"})
+        }
+    }
+}
+
+function  stopProcessBar() {
+    clearInterval(processBarId);
+}
+
+$(document).on('click','.di-stop-my-answer',function () {
+    $('.di-footer').show();
+    $('.di-status').html("Completed");
+    clearInterval(processBarId);
+
+})
+
+
+/*End*/
+
+
+
 
 $(document).on('click','.di-close-icon',function () {
     console.log("Clicked :::::::::")
     $('.di-alertMessage').hide();
+    $('#stop').click();
 })
+
+
+
+
+
+
 
 
 /*Pagination*/
@@ -88,6 +135,8 @@ describeImage.getRenderDetails = function (pageNumber,page,pageId) {
     console.log("Clicked here DI pg2 ::::::::::::::::::::")
     clearTimeout(timeOut);
     clearInterval(interval);
+    clearInterval(processBarId);
+    clearAll();
     $.ajax({
         method: "POST",
         data:{
@@ -105,7 +154,7 @@ describeImage.getRenderDetails = function (pageNumber,page,pageId) {
                 $('.di-pagination-div').html(json.pagination);
             }
             var descriptionTime = $('.record-di').attr('data-record-time');
-            var numberOfSeconds = 10,
+            var numberOfSeconds = 5,
                 display = document.querySelector('.di-status');
             startTimerForDescribeImage(numberOfSeconds, display,descriptionTime);
         }

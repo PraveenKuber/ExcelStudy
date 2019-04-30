@@ -76,6 +76,11 @@
     Gson gson = new Gson();
     JsonObject jsonObject = new JsonObject();
 
+    String previouslyOccurred = "-";
+    if(retellLecture.getPreviouslyOccurred()!=null && !retellLecture.getPreviouslyOccurred().isEmpty()){
+        previouslyOccurred = retellLecture.getPreviouslyOccurred();
+    }
+
     stringBuilder.append("<div class=\"rl-render-div\">");
 
 
@@ -86,7 +91,21 @@
             " the microphon and retell what you have just heard from the lecture in your own words. You will have 40 seconds to give your response.\n");
     stringBuilder.append("</div>");
 
+    stringBuilder.append("<div class=\"repeated-question\">Previously repeated :");
+    stringBuilder.append("<div class=\"repeated-question-number\">"+previouslyOccurred+"</div>");
+    stringBuilder.append("</div>");
+
     stringBuilder.append("<div class=\"recordCounter-retellLecture\"></div>");
+
+    stringBuilder.append("<div class=\"status-div-one\">");
+    stringBuilder.append("<div class=\"current-status-header-one\">Current status:</div>");
+    stringBuilder.append("<div class=\"current-status-one retellLecture-status-one\">status</div>");
+    stringBuilder.append("<div class=\"status-bar-one retellLecture-status-bar\"></div>");
+    stringBuilder.append("<div class=\"progress-bar-one\">");
+    stringBuilder.append("<span class=\"retellLecture-one\" style=\"width: 0%\"></span>");
+    stringBuilder.append("</div>");
+    stringBuilder.append("</div>");
+
 
     stringBuilder.append("<audio controls id=\"retellLecture\" class=\"audioFile readLecture-audio\">");
     stringBuilder.append("<source class=\"audioFile\"  src='../../"+retellLecture.getAudioFilePath()+"' type=\"audio/ogg\">");
@@ -138,6 +157,8 @@
     stringBuilder.append("<source class=\"audioFile\"  src=\"\" type=\"audio/ogg\">");
     stringBuilder.append("</audio>");
 
+    stringBuilder.append("<div class=\"di-loader loader\"><img class=\"loader-image\" src=\"../../images/loder.gif\"></div>");
+
 
     stringBuilder.append("<div class=\"footer-div rl-footer\">");
     stringBuilder.append("<span class=\"try-again rl-try-again\">Try again</span>");
@@ -151,6 +172,8 @@
     stringBuilder.append("<div class=\"stop-retellLecture\">Stop</div>");
     stringBuilder.append("<div class=\"record-audio-retellLecture\" record-time=\"40\">Record audio</div>");
     stringBuilder.append("<div class=\"stop-audio-retellLecture\">Stop audio</div>");
+
+    stringBuilder.append("<div class=\"common-stop-button rl-stop-my-answer\">Stop</div>");
 
     stringBuilder.append("</div>");
 

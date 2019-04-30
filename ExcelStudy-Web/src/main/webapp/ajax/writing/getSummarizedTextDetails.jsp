@@ -15,6 +15,11 @@
     StringBuilder stringBuilder= new StringBuilder();
     Gson gson = new Gson();
     JsonObject jsonObject = new JsonObject();
+    String previouslyOccurred = "-";
+    if(summarizeWrittenText.getPreviouslyOccurred()!=null && !summarizeWrittenText.getPreviouslyOccurred().isEmpty()){
+        previouslyOccurred = summarizeWrittenText.getPreviouslyOccurred();
+    }
+
     stringBuilder.append("<div class=\"swt-render-div\">");
     stringBuilder.append("<div class=\"header-data\">Summarize written text</div>");
     stringBuilder.append("<div class=\"difficulty-level\"></div>");
@@ -22,6 +27,11 @@
     stringBuilder.append("Read the passage below and summarize it using one sentence. Type your response in the box at the bottom of the screen. You have 10 minutes to finish this task. " +
             "Your response will be judged on the quality of your writing and on how well your response presents the key points in the passage.");
     stringBuilder.append("</div>");
+
+    stringBuilder.append("<div class=\"repeated-question\">Previously repeated :");
+    stringBuilder.append("<div class=\"repeated-question-number\">"+previouslyOccurred+"</div>");
+    stringBuilder.append("</div>");
+
 
 
     stringBuilder.append("<div class=\"summarizeTextDescription\">");
@@ -31,6 +41,12 @@
 
     stringBuilder.append("<textarea rows=\"4\" cols=\"130\" class=\"summarizeTextDescription-output\" onkeyup=\"summarizeWrittenText.getInputTextCount()\">");
     stringBuilder.append("</textarea>");
+
+    stringBuilder.append("<div class=\"basic-util\">");
+    stringBuilder.append("<div class=\"common cut\">Cut</div>");
+    stringBuilder.append("<div class=\"common copy\">Copy</div>");
+    stringBuilder.append("<div class=\"common paste\">Paste</div>");
+    stringBuilder.append("</div>");
 
 
     stringBuilder.append("<div class=\"swt-counter\">");
@@ -104,6 +120,7 @@
     stringBuilder.append("</div>");
     stringBuilder.append("</div>");
     /*End*/
+
 
     jsonObject.addProperty("details",stringBuilder.toString());
     out.print(gson.toJson(jsonObject));

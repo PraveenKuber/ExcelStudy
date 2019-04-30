@@ -16,6 +16,11 @@
     Gson gson = new Gson();
     JsonObject jsonObject = new JsonObject();
 
+    String previouslyOccurred = "-";
+    if(describeImage.getPreviouslyOccurred()!=null && !describeImage.getPreviouslyOccurred().isEmpty()){
+        previouslyOccurred = describeImage.getPreviouslyOccurred();
+    }
+
     stringBuilder.append("<div class=\"di-render-div\">");
 
     stringBuilder.append("<div class=\"header-data\">Repeat sentence</div>");
@@ -24,6 +29,11 @@
     stringBuilder.append("  Look at the picture below. In 25 seconds, please speak into microphone " +
             "and describe in detail what the picture is showing. You will have 40 seconds to give your response.");
     stringBuilder.append("</div>");
+
+    stringBuilder.append("<div class=\"repeated-question\">Previously repeated :");
+    stringBuilder.append("<div class=\"repeated-question-number\">"+previouslyOccurred+"</div>");
+    stringBuilder.append("</div>");
+
 
     stringBuilder.append("<div class=\"describe-image col-md-12\">");
     stringBuilder.append("<div class=\"describe-image-details col-md-7\">");
@@ -47,13 +57,19 @@
 
     stringBuilder.append("</div>");
 
+
+
     stringBuilder.append("<div class=\"alert-message di-alertMessage\">");
     stringBuilder.append("<div class=\"close-icon di-close-icon\" style=\"color:rgba(0, 0, 0, 0.5);\">x</div>");
     stringBuilder.append("<div class=\"alert-header\">! Alert</div>");
     stringBuilder.append("<div class=\"alert-content\">Times Up!! The allocated time for finishing this task is finished!!</div>");
     stringBuilder.append("</div>");
 
+
     stringBuilder.append("<audio controls src=\"\" id=\"di-audio\"></audio>");
+    stringBuilder.append("<div class=\"di-loader loader\"><img class=\"loader-image\" src=\"../../images/loder.gif\"></div>");
+
+
 
 
     stringBuilder.append("<div class=\"footer-div di-footer\">");
@@ -66,9 +82,17 @@
     stringBuilder.append("<div data-record-time="+describeImage.getRecordableTime()+" class=\"record-di\">Record</div>");
     stringBuilder.append("<div class=\"stop-di\">Stop</div>");
 
+     /*Stop button*/
+    stringBuilder.append("<div class=\"stop-di-button\">");
+    stringBuilder.append("<div class=\"di-stop-my-answer\">Stop</div>");
+    stringBuilder.append("</div>");
+    /*end*/
+
+
     stringBuilder.append("</div>");
 
     /*End of render div*/
+
 
 
 
@@ -97,8 +121,6 @@
 
 
 %>
-
-
 
 
 

@@ -16,6 +16,11 @@
     StringBuilder stringBuilder= new StringBuilder();
     Gson gson = new Gson();
     JsonObject jsonObject = new JsonObject();
+    String previouslyOccurred = "-";
+    if(writeEssay.getPreviouslyOccurred()!=null && !writeEssay.getPreviouslyOccurred().isEmpty()){
+        previouslyOccurred = writeEssay.getPreviouslyOccurred();
+    }
+
     stringBuilder.append("<div class=\"we-render-div\">");
     stringBuilder.append("<div class=\"header-data\">Write essay</div>");
     stringBuilder.append("<div class=\"difficulty-level\"></div>");
@@ -24,23 +29,34 @@
             "present supporting details, and control the elements of standard written English. You should write 200-300 words.");
     stringBuilder.append("</div>");
 
+    stringBuilder.append("<div class=\"repeated-question\">Previously repeated :");
+    stringBuilder.append("<div class=\"repeated-question-number\">"+previouslyOccurred+"</div>");
+    stringBuilder.append("</div>");
+
+
     stringBuilder.append("<div class=\"writeEssayDescription\">");
     stringBuilder.append(writeEssay.getEssayQuestion());
     stringBuilder.append("</div>");
 
 
-    stringBuilder.append("<textarea rows=\"4\" cols=\"130\" class=\"write-essay-output\" onkeyup=\"writeEssay.getInputTextCount()\">");
+    stringBuilder.append("<textarea rows=\"14\" cols=\"130\" class=\"write-essay-output\" onkeyup=\"writeEssay.getInputTextCount()\">");
     stringBuilder.append("</textarea>");
+
+    stringBuilder.append("<div class=\"basic-util\">");
+    stringBuilder.append("<div class=\"common cut\">Cut</div>");
+    stringBuilder.append("<div class=\"common copy\">Copy</div>");
+    stringBuilder.append("<div class=\"common paste\">Paste</div>");
+    stringBuilder.append("</div>");
 
 
     stringBuilder.append("<div class=\"we-counter\">");
     stringBuilder.append("<div class=\"we-word-counter\">");
     stringBuilder.append("<span class=\"word-counter-header\">Total word count : </span>");
-    stringBuilder.append("<span class=\"we-word-counter word-counter-content\"> </span>");
+    stringBuilder.append("<span class=\"we-word-counter-content word-counter-content\"> </span>");
     stringBuilder.append("</div>");
     stringBuilder.append("<div class=\"we-time-counter\">");
     stringBuilder.append("<span class=\"time-counter-header\">Timer : </span>");
-    stringBuilder.append("<span class=\"we-time-counter time-counter-content\"> </span>");
+    stringBuilder.append("<span class=\"we-time-counter-content time-counter-content\"> </span>");
     stringBuilder.append("</div>");
     stringBuilder.append("</div>");
 
@@ -59,7 +75,7 @@
     stringBuilder.append("<textarea rows=\"6\" cols=\"60\" readonly class=\"we-your-answer-content\"></textarea>");
     stringBuilder.append("</div>");
     stringBuilder.append("<div class=\"we-sample-answer\">");
-    stringBuilder.append("<div class=\"we-sample-header\">Sample answer</div>");
+    stringBuilder.append("<div class=\"we-sample-header\">Theme</div>");
     stringBuilder.append("<div class=\"we-theme-name\">"+writeEssay.getThemeName()+"</div>");
     stringBuilder.append("<div class=\"swt-sample-suggestion-header\">Suggested Key Points:</div>");
     stringBuilder.append("<div class=\"suggestion-list\">");
@@ -83,9 +99,7 @@
     stringBuilder.append("</div>");
 
 
-
-
-       /*Pagination div*/
+    /*Pagination*/
     stringBuilder.append("<div class=\"we-pagination-div\">");
     stringBuilder.append("<div id=\"cp-style-div\" class=\"we-pagination\">");
     stringBuilder.append("<div id=\"cp-style\"  class=\"we-previous\" style=\"visibility: hidden\" data-page=\"previous\" data-page-id=\"2\">Previous</div>");
@@ -100,8 +114,8 @@
     stringBuilder.append("<div id=\"cp-style\" class=\"we-next\" data-page=\"next\" data-page-id=\"2\">Next</div>");
     stringBuilder.append("</div>");
     stringBuilder.append("</div>");
-    /*End*/
 
+    System.out.println("String builder :::::::::"+stringBuilder.toString());
     jsonObject.addProperty("details",stringBuilder.toString());
     out.print(gson.toJson(jsonObject));
 

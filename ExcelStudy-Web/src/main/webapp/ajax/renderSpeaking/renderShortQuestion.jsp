@@ -75,6 +75,10 @@
     StringBuilder stringBuilder = new StringBuilder();
     Gson gson = new Gson();
     JsonObject jsonObject = new JsonObject();
+    String previouslyOccurred = "-";
+    if(shortQuestion.getPreviouslyOccurred()!=null && !shortQuestion.getPreviouslyOccurred().isEmpty()){
+        previouslyOccurred = shortQuestion.getPreviouslyOccurred();
+    }
 
 
 
@@ -89,9 +93,24 @@
     stringBuilder.append("You will hear a question. Please give a simple and short answer. Often just one or a few words is enough.");
     stringBuilder.append("</div>");
 
+    stringBuilder.append("<div class=\"repeated-question\">Previously repeated :");
+    stringBuilder.append("<div class=\"repeated-question-number\">"+previouslyOccurred+"</div>");
+    stringBuilder.append("</div>");
+
     System.out.println("shortQuestion.getAudioFilePath():::::::"+shortQuestion.getAudioFilePath());
 
     stringBuilder.append("<div class=\"recordCounter-sq\" style=\"color:white;\">test</div>");
+
+    stringBuilder.append("<div class=\"status-div-one\">");
+    stringBuilder.append("<div class=\"status-header-one\"></div>");
+    stringBuilder.append("<div class=\"current-status-header-one\">Current status:</div>");
+    stringBuilder.append("<div class=\"current-status-one short-question-status-one\">completed</div>");
+    stringBuilder.append("<div class=\"status-bar-one short-question-status-bar\"></div>");
+    stringBuilder.append("<div class=\"progress-bar-one\">");
+    stringBuilder.append("<span class=\"shortQuestion-one\"></span>");
+    stringBuilder.append("</div>");
+    stringBuilder.append("</div>");
+
 
     /*resource/shortQuestion/001.mp3*/
     stringBuilder.append("<audio controls id=\"short-question\" class=\"audioFile shortQuestion-audio\">");
@@ -144,6 +163,8 @@
 
     stringBuilder.append("<div class=\"record-short-question\">Record</div>");
     stringBuilder.append("<div class=\"stop-short-question\">Stop</div>");
+
+    stringBuilder.append("<div class=\"common-stop-button sq-stop-my-answer\">Stop</div>");
 
     stringBuilder.append("</div>");
     /*End render div*/

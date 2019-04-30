@@ -368,7 +368,8 @@ var Recorder = exports.Recorder = (function () {
 					encoderWorker.onmessage = function(e) {
 						if (e.data.cmd === 'data') {
 							currCallback(new Blob([new Uint8Array(e.data.buf)], {type: "audio/mp3"}));
-							console.log("Done converting to MP3");
+							$(".loader").css("visibility","hidden");
+							console.log("Done converting to MP3 , hide processbar");
 						}
 					};
 				};

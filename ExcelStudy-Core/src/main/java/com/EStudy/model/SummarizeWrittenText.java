@@ -10,6 +10,15 @@ public class SummarizeWrittenText {
     private String sampleAnswerHeader;
     private String sampleAnswerContent;
     private List<String> suggestedPoints;
+    private String previouslyOccurred;
+
+    public String getPreviouslyOccurred() {
+        return previouslyOccurred;
+    }
+
+    public void setPreviouslyOccurred(String previouslyOccurred) {
+        this.previouslyOccurred = previouslyOccurred;
+    }
 
     public String getWrittenText() {
         return writtenText;

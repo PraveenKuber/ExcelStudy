@@ -6,6 +6,15 @@ package com.EStudy.model;
 public class ReadAloud {
     private String audioScript;
     private String recordableLength;
+    private String previouslyOccurred;
+
+    public String getPreviouslyOccurred() {
+        return previouslyOccurred;
+    }
+
+    public void setPreviouslyOccurred(String previouslyOccurred) {
+        this.previouslyOccurred = previouslyOccurred;
+    }
 
     public String getAudioScript() {
         return audioScript;

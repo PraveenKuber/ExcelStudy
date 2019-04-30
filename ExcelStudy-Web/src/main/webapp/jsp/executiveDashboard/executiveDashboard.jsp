@@ -1,5 +1,15 @@
 <!doctype html>
 <html lang="en">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<%
+    String userName = request.getParameter("userName");
+    System.out.println("userName::::::::::::::"+userName);
+    if(userName ==null ||  userName.isEmpty()){
+        userName = "-";
+    }
+%>
 <head>
     <meta charset="utf-8"/>
     <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
@@ -17,6 +27,7 @@
     <link href="../../css/executiveDashboard.css" rel="stylesheet"/>
     <link href="../../css/speaking.css" rel="stylesheet"/>
     <link href="../../css/writing.css" rel="stylesheet"/>
+    <link href="../../css/listening.css" rel="stylesheet">
 
 
     <!--  Paper Dashboard core CSS    -->
@@ -47,7 +58,12 @@
             <a href="http://www.creative-tim.com" class="simple-text logo-mini">
                 BT
             </a>
-            <a href="http://www.creative-tim.com" class="simple-text logo-normal">OCE</a>
+            <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+
+            </a>
+
+            <div class="logo-name">OEC</div>
+            <div class="project-title">Overseas Education Consultancy</div>
         </div>
         <div class="sidebar-wrapper">
             <div class="user">
@@ -57,7 +73,7 @@
                     </div>
 
                     <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                        <span></span>Praveen<b class="caret"></b></span>
+                        <span></span><%=userName%><b class="caret"></b></span>
                     </a>
                     <div class="clearfix"></div>
 
@@ -75,6 +91,12 @@
                                     <span class="sidebar-normal">Settings</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="#decide">
+                                    <span class="sidebar-mini">L</span>
+                                    <span class="sidebar-normal logout">Logout</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -83,6 +105,7 @@
             <%--Dashboard changes--%>
 
             <ul class="nav">
+
                 <li class="active">
                     <a data-toggle="collapse" href="#dashboardOverview" aria-expanded="true">
                         <i class="ti-panel"></i>
@@ -94,21 +117,68 @@
                         <ul class="nav">
                             <li class="active">
                                 <div class="listening-page summarize_spoken_text">
-                                    <span class="sidebar-mini">S</span>
-                                    <span class="sidebar-normal">Summarize spoken text</span>
+                                    <span class="sidebar-mini">SST -</span>
+                                    <span class="sidebar-normal ">Summarize spoken text</span>
                                 </div>
                             </li>
+
                             <li>
-                                <div class="listening-page">
-                                    <span class="sidebar-mini">M</span>
-                                    <span class="sidebar-normal">MC, choose multiple answers</span>
+                                <div class="listening-page choose-multiple-answers">
+                                    <span class="sidebar-mini">MC -</span>
+                                    <span class="sidebar-normal">choose multiple answers</span>
                                 </div>
                             </li>
+
+
+                            <li>
+                                <div class="listening-page choose-multiple-answers">
+                                    <span class="sidebar-mini">LFIB -</span>
+                                    <span class="sidebar-normal">Fill in the blanks</span>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="listening-page highlight-correct-summary">
+                                    <span class="sidebar-mini">HCS -</span>
+                                    <span class="sidebar-normal">Highlight correct summary</span>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="listening-page choose-single-answer">
+                                    <span class="sidebar-mini">CSA -</span>
+                                    <span class="sidebar-normal">Choose single answer</span>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="listening-page select-missing-words">
+                                    <span class="sidebar-mini">SMW -</span>
+                                    <span class="sidebar-normal">Select missing words</span>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="listening-page highlight-incorrect-words">
+                                    <span class="sidebar-mini">HIC -</span>
+                                    <span class="sidebar-normal">Highlight incorrect words</span>
+                                </div>
+                            </li>
+
+
+                            <li>
+                                <div class="listening-page  write-from-dictation">
+                                    <span class="sidebar-mini">WFD -</span>
+                                    <span class="sidebar-normal">Write from dictation</span>
+                                </div>
+                            </li>
+
+
                         </ul>
                     </div>
                 </li>
 
-               <%-- <li class="active">
+                <%--<li class="active">
                     <a data-toggle="collapse" href="#dashboardOverview" aria-expanded="true">
                         <i class="ti-panel"></i>
                         <p>Excel Speaking
@@ -134,7 +204,7 @@
                 </li>--%>
 
 
-                <li>
+                <li class="active">
                     <a data-toggle="collapse" href="#componentsExamples">
                         <i class="ti-package"></i>
                         <p>Speaking
@@ -234,11 +304,39 @@
     </div>
 </div>
 
+<div class="col-md-12 header oec-header">
+    <div class="col-md-2"> </div>
+    <div class="col-md-10 oce-header-details">
+
+        <form class="navbar-form navbar-left navbar-search-form" role="search">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" value="" class="form-control" placeholder="Search...">
+            </div>
+        </form>
+
+        <div class="settings">
+            <a href="#settings" class="btn-rotate oce-settings">
+                <i class="ti-settings"></i>
+                <p class="hidden-md hidden-lg">
+                    Settings
+                </p>
+            </a>
+        </div>
+
+        <div class="loginDetails"><i class="fas fa-user"></i><%=userName%></div>
+    </div>
+</div>
+
 <div class="main-panel">
+
+
+
     <nav class="navbar navbar-default">
 
         <div class="container-fluid">
-            <div class="navbar-minimize">
+
+           <%-- <div class="navbar-minimize">
                 <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-more-alt"></i></button>
             </div>
             <div class="navbar-header">
@@ -251,8 +349,9 @@
                 <a class="navbar-brand" href="#Dashboard">
                     Overview
                 </a>
-            </div>
-            <div class="collapse navbar-collapse">
+            </div>--%>
+
+            <%--<div class="collapse navbar-collapse">
 
                 <form class="navbar-form navbar-left navbar-search-form" role="search">
                     <div class="input-group">
@@ -294,7 +393,22 @@
                         </a>
                     </li>
                 </ul>
+            </div>--%>
+
+            <div class="oec-main">
+                <div class="content-header-title">OEC</div>
+                <div class="content-header-content">Overseas Education Consultancy</div>
+                <div class="about-header">PTE Academic</div>
+                <div class="about-description">
+                    PTE Academic is a 3 hour long, computer-based assessment of a person's English language ability in an academic context.
+                    The test assesses an individual's communicative skills of Reading, Writing, Listening and Speaking skills
+                    through questions using authentically-sourced material. In addition, the test provides feedback on enabling
+                    skills in the form of Oral Fluency, Grammar, Vocabulary, Written Discourse, Pronunciation and Spelling.
+                </div>
             </div>
+
+
+
         </div>
     </nav>
 
@@ -589,25 +703,14 @@
     </audio>
 </div>
 
-<%--Modal--%>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="dialogModel">Speaking alert</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Alert! The time given for the speaking is completed
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
+<div class="col-md-12 footer oec-footer">
+    <div class="col-md-2"> </div>
+    <div class="col-md-10 oce-footer-details">
+          <div class="copyright-oce">Copyright &copy; 2019 <a href="www.overseaseducationconsultancy.com">www.overseaseducationconsultancy.com</a> All rights reserved.</div>
+          <%--<div class="designer">Designed by : <a href="https://www.facebook.com/praveeno.range.12">Praveen Kuber</a></div>--%>
     </div>
 </div>
+
 
 
 </body>
@@ -691,6 +794,13 @@
 <script src="../../js/speaking/shortQuestion.js"></script>
 <script src="../../js/writing/summarizeWrittenText.js"></script>
 <script src="../../js/writing/writeEssay.js"></script>
+<script src="../../js/listening/writeFromDictation.js"></script>
+<script src="../../js/listening/chooseMultipleAnswers.js"></script>
+<script src="../../js/listening/highlightCorrectSummary.js"></script>
+<script src="../../js/listening/chooseSingleAnswer.js"></script>
+<script src="../../js/listening/selectMissingWord.js"></script>
+<script src="../../js/listening/hightlightIncorrectWords.js"></script>
+
 
 
 
