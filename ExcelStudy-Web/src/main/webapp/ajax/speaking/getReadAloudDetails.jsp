@@ -23,7 +23,7 @@
     /*Render div */
     stringBuilder.append("<div class=\"ra-render-div\">");
 
-    stringBuilder.append("<div class=\"header-data\">Read aloud </div>");
+    stringBuilder.append("<div class=\"header-data\">Read aloud</div>");
     stringBuilder.append("<div class=\"difficulty-level\"></div>");
     stringBuilder.append("<div class=\"module-description\">");
     stringBuilder.append(" Look at the text below. In "+readAloud.getRecordableLength()+"seconds, you must read this text aloud as naturally and clearly as possible. You have "+readAloud.getRecordableLength()+" seconds to read aloud.");
@@ -50,6 +50,7 @@
             "Humans provided the animals with food and protection, in exchange for which the animals " +
             "provided the humans their milk and eggs and their flesh.");*/
 
+    System.out.println("readAloud.getAudioScript()::::::::::::"+readAloud.getAudioScript());
     stringBuilder.append(readAloud.getAudioScript());
     stringBuilder.append("</div>");
 
@@ -140,7 +141,6 @@
     jsonObject.addProperty("details",stringBuilder.toString());
     out.print(gson.toJson(jsonObject));
 %>
-
 
 
 

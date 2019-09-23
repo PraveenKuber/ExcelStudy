@@ -21,7 +21,7 @@ $('.describe_image').click(function (event) {
             $('.main-panel').html(json.details);
             //var descriptionTime = 400
             var descriptionTime = $('.record-di').attr('data-record-time');
-            var numberOfSeconds = 5,
+            var numberOfSeconds = 25,
                 display = document.querySelector('.di-status');
             startTimerForDescribeImage(numberOfSeconds, display,descriptionTime);
         }
@@ -31,10 +31,11 @@ $('.describe_image').click(function (event) {
 })
 
 
+
 function startTimerForDescribeImage(duration, display,descriptionTime) {
     var timer = duration, seconds;
     interval = setInterval(function () {
-        seconds = parseInt(timer % 60, 10);
+        seconds = parseInt(timer/*timer % 60, 10*/);
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = "Record will start in "+seconds;
         if (--timer < 0) {
@@ -94,9 +95,13 @@ function  stopProcessBar() {
 $(document).on('click','.di-stop-my-answer',function () {
     $('.di-footer').show();
     $('.di-status').html("Completed");
+    
+    clearInterval(interval);
+    clearTimeout(timeOut);
     clearInterval(processBarId);
-
-})
+    clearAll();
+    
+});
 
 
 /*End*/
@@ -105,7 +110,6 @@ $(document).on('click','.di-stop-my-answer',function () {
 
 
 $(document).on('click','.di-close-icon',function () {
-    console.log("Clicked :::::::::")
     $('.di-alertMessage').hide();
     $('#stop').click();
 })
@@ -154,7 +158,7 @@ describeImage.getRenderDetails = function (pageNumber,page,pageId) {
                 $('.di-pagination-div').html(json.pagination);
             }
             var descriptionTime = $('.record-di').attr('data-record-time');
-            var numberOfSeconds = 5,
+            var numberOfSeconds = 25,
                 display = document.querySelector('.di-status');
             startTimerForDescribeImage(numberOfSeconds, display,descriptionTime);
         }

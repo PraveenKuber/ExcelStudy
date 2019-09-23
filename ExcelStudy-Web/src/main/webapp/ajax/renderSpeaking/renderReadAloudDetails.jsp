@@ -82,7 +82,7 @@
 
     stringBuilder.append("<div class=\"ra-render-div\">");
 
-    stringBuilder.append("<div class=\"header-data\">Summarize spoken text </div>");
+    stringBuilder.append("<div class=\"header-data\">Read aloud</div>");
     stringBuilder.append("<div class=\"difficulty-level\"></div>");
     stringBuilder.append("<div class=\"module-description\">");
     stringBuilder.append(" Look at the text below. In "+readAloud.getRecordableLength()+"seconds, you must read this text aloud as naturally and clearly as possible. You have "+readAloud.getRecordableLength()+" seconds to read aloud.");

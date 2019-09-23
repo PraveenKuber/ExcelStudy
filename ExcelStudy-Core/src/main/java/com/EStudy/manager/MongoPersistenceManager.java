@@ -1,5 +1,6 @@
 package com.EStudy.manager;
 
+import com.EStudy.config.Config;
 import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -7,10 +8,7 @@ import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
 import org.omg.CORBA.portable.ApplicationException;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 ;
 
@@ -30,32 +28,13 @@ public class MongoPersistenceManager {
 
 
     private MongoPersistenceManager() {
-        /*Config config = Config.getInstance();
-        try {
-            this.username = config.getConfig("estudy.mongodb.username");
-            this.password = config.getConfig("estudy.mongodb.password");
-            this.dbName = config.getConfig("estudy.mongodb.dbName");
-            this.ipAddress = config.getConfig("estudy.mongodb.ip");
-            this.port = Integer.parseInt(config.getConfig("estudy.mongodb.port"));
+        Config config = Config.getInstance();
 
+        /*this.mongoClient = new MongoClient(config.getConfig("estudy.mongodb.ip"), Integer.parseInt(config.getConfig("estudy.mongodb.port")));
+        this.mongoDatabase = mongoClient.getDatabase(config.getConfig("estudy.mongodb.dbName"));
+        this.dataBase = mongoClient.getDB(config.getConfig("estudy.mongodb.dbName"));*/
 
-            MongoCredential mongoCredential = MongoCredential.createCredential(username, dbName, password.toCharArray());
-
-            //Added recent by Hemanth to ensure DB connection is not lost even during idle time.
-            MongoClientOptions.Builder optionsBuilder = new MongoClientOptions.Builder();
-            optionsBuilder.maxConnectionIdleTime(0);
-            optionsBuilder.maxConnectionLifeTime(0);
-            MongoClientOptions options = optionsBuilder.build();
-
-            this.mongoClient = new MongoClient(new ServerAddress(ipAddress, port), Arrays.asList(mongoCredential),options);
-            this.mongoDatabase = mongoClient.getDatabase(dbName);
-            this.dataBase = mongoClient.getDB(dbName);
-        } catch (Exception e) {
-            System.out.println(e);
-        }*/
-
-
-        this.mongoClient = new MongoClient("localhost", 27017);
+        this.mongoClient = new MongoClient("localhost",27017);
         this.mongoDatabase = mongoClient.getDatabase("estudy");
         this.dataBase = mongoClient.getDB("estudy");
     }

@@ -118,7 +118,6 @@
     for(String question:questions){
         String className="";
         if(answers.contains(question)) className = "cma-answer";
-
         stringBuilder.append("<div class=\"select-answer-choice multiple-answer-choice "+className+"\">");
         stringBuilder.append("<label class=\"choice-label\"><input class=\"checkBox\" type=\"checkbox\"  value=\"true\">"+question+"</label>");
         stringBuilder.append("</div>");
@@ -139,7 +138,7 @@
     stringBuilder.append("<div class=\"audio-script-section\">");
     stringBuilder.append("<div class=\"audio-script-header\">Audio script:</div>");
     stringBuilder.append("<div class=\"audio-script-content\">");
-    stringBuilder.append("We’re going to go on a dive to the deep sea, and anyone that’s had that lovely opportunity knows that for about two and half hours on the way down, it’s a perfectly positively pitch-black world. And we used to see the most strange animals out the window that you couldn’t describe: these alternating lights — a world of bio-luminescence, like fireflies. Dr. Elvis Walter — she’s now at the Indian Ocean Research Organization , she was able to come up with a camera that could capture some of these unbelievable animals, and that’s what you’re seeing here on the screen. That’s all bio-luminescence.");
+    stringBuilder.append(chooseMultipleAnswers.getAudioScript());
     stringBuilder.append("</div>");
     stringBuilder.append("</div>");
     stringBuilder.append("</div>");

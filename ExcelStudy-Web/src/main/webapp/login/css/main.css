@@ -378,7 +378,7 @@ iframe {
   flex-wrap: wrap;
 }
 
-.login100-form-btn {
+.login100-form-btn,.signin-form-btn {
   font-family: Raleway-Bold;
   font-size: 16px;
   color: #fff;
@@ -403,7 +403,7 @@ iframe {
 
 }
 
-.login100-form-btn:hover {
+.login100-form-btn:hover, .signin-form-btn:hover{
   /*background-color: #57b846;*/
   background-color: #ef8157;
 }
@@ -517,8 +517,12 @@ iframe {
 
 
 
-.login100-form-btn {
+.login100-form-btn,.signin-form-btn {
     margin-top: 9%;
+}
+
+button.signin-form-btn {
+  margin-left: 10%;
 }
 
 
@@ -529,6 +533,10 @@ iframe {
   margin-top: 3%;
   color: red;
   visibility: hidden;
+}
+
+.col-md-4.container-login100-form-btn {
+  display: -webkit-box;
 }
 
 

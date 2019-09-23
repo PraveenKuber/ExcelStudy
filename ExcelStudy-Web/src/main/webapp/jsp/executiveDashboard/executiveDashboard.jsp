@@ -16,7 +16,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>OEC</title>
+    <title>ADWIZE</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
@@ -28,6 +28,7 @@
     <link href="../../css/speaking.css" rel="stylesheet"/>
     <link href="../../css/writing.css" rel="stylesheet"/>
     <link href="../../css/listening.css" rel="stylesheet">
+    <link href="../../css/reading.css" rel="stylesheet">
 
 
     <!--  Paper Dashboard core CSS    -->
@@ -62,7 +63,7 @@
 
             </a>
 
-            <div class="logo-name">OEC</div>
+            <div class="logo-name">ADWIZE</div>
             <div class="project-title">Overseas Education Consultancy</div>
         </div>
         <div class="sidebar-wrapper">
@@ -106,77 +107,6 @@
 
             <ul class="nav">
 
-                <li class="active">
-                    <a data-toggle="collapse" href="#dashboardOverview" aria-expanded="true">
-                        <i class="ti-panel"></i>
-                        <p>Listening
-                            <b class="caret"></b>
-                        </p>
-                    </a>
-                    <div class="collapse in" id="dashboardOverview">
-                        <ul class="nav">
-                            <li class="active">
-                                <div class="listening-page summarize_spoken_text">
-                                    <span class="sidebar-mini">SST -</span>
-                                    <span class="sidebar-normal ">Summarize spoken text</span>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="listening-page choose-multiple-answers">
-                                    <span class="sidebar-mini">MC -</span>
-                                    <span class="sidebar-normal">choose multiple answers</span>
-                                </div>
-                            </li>
-
-
-                            <li>
-                                <div class="listening-page choose-multiple-answers">
-                                    <span class="sidebar-mini">LFIB -</span>
-                                    <span class="sidebar-normal">Fill in the blanks</span>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="listening-page highlight-correct-summary">
-                                    <span class="sidebar-mini">HCS -</span>
-                                    <span class="sidebar-normal">Highlight correct summary</span>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="listening-page choose-single-answer">
-                                    <span class="sidebar-mini">CSA -</span>
-                                    <span class="sidebar-normal">Choose single answer</span>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="listening-page select-missing-words">
-                                    <span class="sidebar-mini">SMW -</span>
-                                    <span class="sidebar-normal">Select missing words</span>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="listening-page highlight-incorrect-words">
-                                    <span class="sidebar-mini">HIC -</span>
-                                    <span class="sidebar-normal">Highlight incorrect words</span>
-                                </div>
-                            </li>
-
-
-                            <li>
-                                <div class="listening-page  write-from-dictation">
-                                    <span class="sidebar-mini">WFD -</span>
-                                    <span class="sidebar-normal">Write from dictation</span>
-                                </div>
-                            </li>
-
-
-                        </ul>
-                    </div>
-                </li>
 
                 <%--<li class="active">
                     <a data-toggle="collapse" href="#dashboardOverview" aria-expanded="true">
@@ -206,7 +136,7 @@
 
                 <li class="active">
                     <a data-toggle="collapse" href="#componentsExamples">
-                        <i class="ti-package"></i>
+                        <i class="<%--ti-package--%> fa fa-microphone"></i>
                         <p>Speaking
                             <b class="caret"></b>
                         </p>
@@ -248,33 +178,33 @@
                 </li>
 
 
-              <%--  <li>
-                    <a data-toggle="collapse" href="#formsExamples">
-                        <i class="ti-package"></i>
-                        <p>Writing
-                            <b class="caret"></b>
-                        </p>
-                    </a>
-                    <div class="collapse" id="formsExamples">
-                        <ul class="nav">
-                            <li>
-                                <div class="writing-page summarizeWrittenText">
-                                    <span class="sidebar-mini">SWT- </span>
-                                    <span class="sidebar-normal">Summarize written text</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </li>--%>
+                <%--  <li>
+                      <a data-toggle="collapse" href="#formsExamples">
+                          <i class="ti-package"></i>
+                          <p>Writing
+                              <b class="caret"></b>
+                          </p>
+                      </a>
+                      <div class="collapse" id="formsExamples">
+                          <ul class="nav">
+                              <li>
+                                  <div class="writing-page summarizeWrittenText">
+                                      <span class="sidebar-mini">SWT- </span>
+                                      <span class="sidebar-normal">Summarize written text</span>
+                                  </div>
+                              </li>
+                          </ul>
+                      </div>
+                  </li>--%>
 
-                <li>
-                    <a data-toggle="collapse" href="#formsExamples">
+                <li class="active">
+                    <a data-toggle="collapse" href="#tablesExamples">
                         <i class="ti-clipboard"></i>
                         <p>Writing
                             <b class="caret"></b>
                         </p>
                     </a>
-                    <div class="collapse" id="formsExamples">
+                    <div class="collapse" id="tablesExamples">
                         <ul class="nav">
                             <li>
                                 <div class="writing-page summarizeWrittenText">
@@ -293,6 +223,132 @@
                         </ul>
                     </div>
                 </li>
+
+
+                <li class="active">
+                    <a data-toggle="collapse" href="#formsExamples">
+                        <i class="<%--ti-clipboard--%> fas fa-book-open"></i>
+                        <p>Reading
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <div class="collapse" id="formsExamples">
+                        <ul class="nav">
+                            <li>
+                                <div class="reading-page ra-choose-single-answer">
+                                    <span class="sidebar-mini">CSA-</span>
+                                    <span class="sidebar-normal">Choose single answer</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <li>
+                                <div class="reading-page ra-choose-multiple-answer">
+                                    <span class="sidebar-mini">CMA-</span>
+                                    <span class="sidebar-normal">Choose multiple answer</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <li>
+                                <div class="reading-page read-and-write-fill-in-the-blanks">
+                                    <span class="sidebar-mini">R&W FITB-</span>
+                                    <span class="sidebar-normal">Fill in the blanks</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <li>
+                                <div class="reading-page read-fill-in-the-blanks">
+                                    <span class="sidebar-mini">R FITB-</span>
+                                    <span class="sidebar-normal">Fill in the blanks</span>
+                                </div>
+                            </li>
+                        </ul>
+
+
+                        <ul class="nav">
+                            <li>
+                                <div class="reading-page re-order-paragarph">
+                                    <span class="sidebar-mini">ROP-</span>
+                                    <span class="sidebar-normal">Re-order paragraph</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                    <li class="active">
+                        <a data-toggle="collapse" href="#dashboardOverview" aria-expanded="true">
+                            <i class="<%--ti-panel--%> fas fa-bullhorn"></i>
+                            <p>Listening
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="dashboardOverview">
+                            <ul class="nav">
+                                <li class="active">
+                                    <div class="listening-page summarize_spoken_text">
+                                        <span class="sidebar-mini">SST -</span>
+                                        <span class="sidebar-normal ">Summarize spoken text</span>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="listening-page choose-multiple-answers">
+                                        <span class="sidebar-mini">MC -</span>
+                                        <span class="sidebar-normal">choose multiple answers</span>
+                                    </div>
+                                </li>
+
+
+                                <li>
+                                    <div class="listening-page fill-in-the-blanks">
+                                        <span class="sidebar-mini">LFIB -</span>
+                                        <span class="sidebar-normal">Fill in the blanks</span>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="listening-page highlight-correct-summary">
+                                        <span class="sidebar-mini">HCS -</span>
+                                        <span class="sidebar-normal">Highlight correct summary</span>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="listening-page choose-single-answer">
+                                        <span class="sidebar-mini">CSA -</span>
+                                        <span class="sidebar-normal">Choose single answer</span>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="listening-page select-missing-words">
+                                        <span class="sidebar-mini">SMW -</span>
+                                        <span class="sidebar-normal">Select missing words</span>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="listening-page highlight-incorrect-words">
+                                        <span class="sidebar-mini">HIC -</span>
+                                        <span class="sidebar-normal">Highlight incorrect words</span>
+                                    </div>
+                                </li>
+
+
+                                <li>
+                                    <div class="listening-page  write-from-dictation">
+                                        <span class="sidebar-mini">WFD -</span>
+                                        <span class="sidebar-normal">Write from dictation</span>
+                                    </div>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </li>
 
 
 
@@ -336,20 +392,20 @@
 
         <div class="container-fluid">
 
-           <%-- <div class="navbar-minimize">
-                <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-more-alt"></i></button>
-            </div>
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar bar1"></span>
-                    <span class="icon-bar bar2"></span>
-                    <span class="icon-bar bar3"></span>
-                </button>
-                <a class="navbar-brand" href="#Dashboard">
-                    Overview
-                </a>
-            </div>--%>
+            <%-- <div class="navbar-minimize">
+                 <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-more-alt"></i></button>
+             </div>
+             <div class="navbar-header">
+                 <button type="button" class="navbar-toggle">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar bar1"></span>
+                     <span class="icon-bar bar2"></span>
+                     <span class="icon-bar bar3"></span>
+                 </button>
+                 <a class="navbar-brand" href="#Dashboard">
+                     Overview
+                 </a>
+             </div>--%>
 
             <%--<div class="collapse navbar-collapse">
 
@@ -396,7 +452,7 @@
             </div>--%>
 
             <div class="oec-main">
-                <div class="content-header-title">OEC</div>
+                <div class="content-header-title">ADWIZE</div>
                 <div class="content-header-content">Overseas Education Consultancy</div>
                 <div class="about-header">PTE Academic</div>
                 <div class="about-description">
@@ -706,8 +762,8 @@
 <div class="col-md-12 footer oec-footer">
     <div class="col-md-2"> </div>
     <div class="col-md-10 oce-footer-details">
-          <div class="copyright-oce">Copyright &copy; 2019 <a href="www.overseaseducationconsultancy.com">www.overseaseducationconsultancy.com</a> All rights reserved.</div>
-          <%--<div class="designer">Designed by : <a href="https://www.facebook.com/praveeno.range.12">Praveen Kuber</a></div>--%>
+        <div class="copyright-oce">Copyright &copy; 2019 <a href="http://adwize.co.in">www.adwize.co.in</a> All rights reserved.</div>
+        <%--<div class="designer">Designed by : <a href="https://www.facebook.com/praveeno.range.12">Praveen Kuber</a></div>--%>
     </div>
 </div>
 
@@ -717,6 +773,10 @@
 
 
 <!--   Core JS Files. Extra: TouchPunch for touch library inside jquery-ui.min.js   -->
+
+
+
+
 <script src="../../assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="../../assets/js/jquery-ui.min.js" type="text/javascript"></script>
 <script src="../../assets/js/perfect-scrollbar.min.js" type="text/javascript"></script>
@@ -727,6 +787,9 @@
 <script src="src/Fr.voice.js"></script>
 <script src="js/jquery.js"></script>
 <script src="js/app.js"></script>
+
+
+
 
 
 <!--  Forms Validations Plugin -->
@@ -800,6 +863,24 @@
 <script src="../../js/listening/chooseSingleAnswer.js"></script>
 <script src="../../js/listening/selectMissingWord.js"></script>
 <script src="../../js/listening/hightlightIncorrectWords.js"></script>
+<script src="../../js/listening/fillInTheBlanks.js"></script>
+
+
+
+<script src="../../js/reading/readingChooseSingleAnswer.js"></script>
+<script src="../../js/reading/readingChooseMultipleAnswer.js"></script>
+<script src="../../js/reading/readingFillInTheBlanks.js"></script>
+<script src="../../js/reading/reOrderParagraph.js"></script>
+<script src="../../js/reading/readingFillInTheBlanksDrag.js"></script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    var $i = jQuery.noConflict(true);
+    //alert($i);
+</script>
+
+
 
 
 
@@ -813,3 +894,5 @@
 </script>
 
 </html>
+
+

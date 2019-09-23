@@ -127,7 +127,7 @@
     stringBuilder.append("</div>");
 %>--%>
 
-<%
+<%--<%
     stringBuilder.append("<div class=\"select-answer multiple-answer\">");
     stringBuilder.append("<div class=\"select-answer-header multiple-answer-question\">Which of the following is said by the speaker of the recording you just heard?</div>");
     stringBuilder.append("<div class=\"select-answer-choice multiple-answer-choice\">");
@@ -156,7 +156,7 @@
 
     stringBuilder.append("</div>");
 
-%>
+%>--%>
 
 <%--<div class="select-answer multiple-answer">
     <div class="select-answer-header multiple-answer-question">Which of the following is said by the speaker of the recording you just heard?</div>
@@ -180,7 +180,7 @@
     </div>
 </div>--%>
 
-<div class="score-section">
+<%--<div class="score-section">
     <div class="close-score-section">x</div>
       <div class="audio-script-section">
           <div class="audio-script-header">Audio script:</div>
@@ -211,9 +211,36 @@
 <div class="common-timer">
     <div class="listener-timer-header">Timer: </div>
     <div class="listener-timer cma-listener-timer">10</div>
+</div>--%>
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<%--<div class="container">
+    <div class="row">
+        <div class="col-md-6 reading-division-question ra-csa-question">
+            Mutation breeding is a method of crop development that requires breeders to first find plants that randomly display the traits researchers are looking for, and then breed those plants with other plants displaying similar traits. In order to bring about the required mutations, researchers bombard plants with thermal neutrons, x-rays, and known carcinogenic chemicals in order to damage the plant’s DNA. Today, almost all varieties of wheat grown commercially are products of mutation breeding. Ironically, when scientists discovered how to splice desirable genes directly into the plants, thus avoiding the use of harmful chemicals and radiation, critics derided the new process as potentially dangerous despite the lack of any supporting evidence, resulting in boycotts and bans on genetically modified foods.
+        </div>
+        <div class="col-md-6 reading-division-choices ra-csa-question-choice">
+            Mutation breeding is a method of crop development that requires breeders to first find
+        </div>
+    </div>--%>
 </div>
 
+<div class="col-md-12 reading-division ra-csa">
+    <div class="col-md-6 reading-division-question ra-csa-question">
+        Mutation breeding is a method of crop development that requires breeders to first find plants that randomly display the traits researchers are looking for, and then breed those plants with other plants displaying similar traits. In order to bring about the required mutations, researchers bombard plants with thermal neutrons, x-rays, and known carcinogenic chemicals in order to damage the plant’s DNA. Today, almost all varieties of wheat grown commercially are products of mutation breeding. Ironically, when scientists discovered how to splice desirable genes directly into the plants, thus avoiding the use of harmful chemicals and radiation, critics derided the new process as potentially dangerous despite the lack of any supporting evidence, resulting in boycotts and bans on genetically modified foods.
+    </div>
+    <div class="col-md-6 reading-division-choices ra-csa-question-choice">
 
+    </div>
+</div>
 
 
 

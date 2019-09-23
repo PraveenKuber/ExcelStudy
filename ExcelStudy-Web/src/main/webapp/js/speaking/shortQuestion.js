@@ -52,7 +52,7 @@ var interval1ForSQ;
 function newRepoSQ(duration, display,recordAbleTime,audioFileLength) {
     var timer = duration, seconds;
     interval1ForSQ = setInterval(function () {
-        seconds = parseInt(timer % 60, 10);
+        seconds = /*parseInt(timer % 60, 10);*/ parseInt(timer);
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = "Beginning  in "+seconds;
         if (--timer < 0) {
@@ -98,7 +98,7 @@ function  stopProcessBarRE() {
 function startTimerForShortQuestion(duration, display,recordAbleTime,audioFileLength) {
     var timer = duration, seconds;
     interval = setInterval(function () {
-        seconds = parseInt(timer % 60, 10);
+        seconds = /*parseInt(timer % 60, 10);*/ parseInt(timer);
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = "Record will begin in "+seconds;
         $('.recordCounter-sq').css("color","black");
@@ -126,7 +126,7 @@ function startTimerForShortQuestion(duration, display,recordAbleTime,audioFileLe
 function recordBeginForShortQuestion(duration, display,recordAbleTime) {
     var timer = duration, seconds;
      interval = setInterval(function () {
-        seconds = parseInt(timer % 60, 10);
+        seconds = /*parseInt(timer % 60, 10);*/ parseInt(timer);
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = "Recording will start in "+seconds;
         if (--timer < 0) {
@@ -188,6 +188,13 @@ function  stopProcessProgressBarNewSQ() {
 $(document).on('click', ".sq-stop-my-answer", function () {
     stopProcessProgressBarNewSQ();
     $('.short-question-status').text("Completed");
+
+    clearInterval(interval);
+    clearTimeout(timeOut);
+    clearInterval(processBarIdNewSQ);
+    clearInterval(interval1ForSQ);
+    clearAll();
+    
 });
 
 /*End*/

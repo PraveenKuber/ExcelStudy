@@ -95,7 +95,6 @@ $(document).on('click','.login100-form-btn',function () {
             success:function (data) {
                 data = data.trim();
                 if(data=="true" || data==true){
-                    console.log("Coming here ::::::::::")
                     window.location = 'jsp/executiveDashboard/executiveDashboard.jsp?userName='+userName;
                 }else{
                        $('.error-message').css({"visibility":"visible"});
@@ -109,6 +108,10 @@ $(document).on('click','.login100-form-btn',function () {
         })
     }
 })
+
+$(document).on('click','.signin-form-btn',function () {
+    window.location = "signUp/index.jsp";
+});
 
 
 

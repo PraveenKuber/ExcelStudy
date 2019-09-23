@@ -35,11 +35,12 @@ $('.read_aloud').click(function (event) {
         url: "../../ajax/speaking/getReadAloudDetails.jsp",
         success: function (data) {
             var json = JSON.parse(data.trim());
-            console.log("Speaking success ::::::::::"+json.details)
             $('.main-panel').html(json.details);
+            speaking.alignText();
             var recordableTime = parseInt(json.recordableTime);
             //speaking.countDownDiv(10);
-             var numberOfSeconds = recordableTime,
+            var numberOfSeconds = recordableTime,
+            //var numberOfSeconds = 10,
                 display = document.querySelector('.current-status');
                 startTimerForReadAloud(numberOfSeconds, display,recordableTime);
         }
@@ -51,7 +52,7 @@ $('.read_aloud').click(function (event) {
 function startTimerForReadAloud(duration, display,recordableTime) {
     var timer = duration, seconds;
     interval = setInterval(function () {
-        seconds = parseInt(timer % 60, 10);
+        seconds = /*parseInt(timer % 60, 10);*/ parseInt(timer);
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = "Record will start in "+seconds;
         if (--timer < 0) {
@@ -274,7 +275,8 @@ speaking.getRenderDetails = function (pageNumber,page,pageId) {
             if(json.pagination!=null && json.pagination != "" ){
                 $('.ra-pagination-div').html(json.pagination);
             }
-            var numberOfSeconds = 40,
+            speaking.alignText();
+            var numberOfSeconds = recordTime,
                 display = document.querySelector('.current-status');
             startTimerForReadAloud(numberOfSeconds, display,recordTime);
         }
@@ -311,11 +313,21 @@ $(document).on('click','.ra-stop-my-answer', function () {
     speechRecognizerRA.abort();
     $('.current-status').html("Completed");
     stopProcessBarRA();
+
+    clearAll();
 })
 
 $(document).on('click','.logout',function () {
     window.location = "../../jsp/logoutOCE.jsp";
 })
+
+
+speaking.alignText = function () {
+    console.log("::::::::::::::::::: came:::::::")
+    var text = $('.speaking-description').text();
+    text = text.replace(/\s+/g, " ").trim();
+    $('.speaking-description').html(text);
+}
 
 
 

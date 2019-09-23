@@ -164,6 +164,14 @@
 .close-score-section {
     width: 2%;
     position: absolute;
+    margin-left: 78%;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.fib-close-score-section,.hiw-close-score-section {
+    width: 2%;
+    position: absolute;
     margin-left: 88%;
     font-size: 17px;
     cursor: pointer;
@@ -318,12 +326,40 @@ input.checkBox {
     display: none;
 }
 
+.common-fib {
+    margin-bottom: 2px;
+    margin-top: 2px;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid black;
+    padding-left: 2px;
+}
 
+
+.fib-render-div {
+    color: black;
+}
+
+.score-section-fib {
+    margin-top: 1%;
+    margin-left: 5%;
+}
+
+
+.fib-corrected {
+    display: none;
+    background-color: #26d226;
+    border-radius: 4px;
+}
+
+.score-section-fib{
+    display: none;
+}
 
 
 
 .summarizeSpokenText,.writeFromDictation,.chooseMultipleAnswers,.highlightCorrectSummary,
-.chooseSigleAnswer,.selectMissingWord,.highlightIncorrectWords{
+.chooseSingleAnswer,.selectMissingWord,.highlightIncorrectWords,.fillInTheBlanks{
     margin-top: -3px;
     margin-left: -3px;
     display: block;
@@ -334,7 +370,7 @@ input.checkBox {
 }
 
 .sst-alertMessage,.wfd-alertMessage,.hcs-alertMessage,.csa-alertMessage,
-.smw-alertMessage,.hiw-alertMessage{
+.smw-alertMessage,.hiw-alertMessage,.fib-alertMessage{
     display: none;
 }
 

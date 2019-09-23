@@ -66,7 +66,6 @@ function  processProgressBarCMA(audioLength,className) {
 
 $(document).on('click','.checkBox',function () {
     var clickStatus = $(this).is(":checked");
-    console.log("click status :::::::::::::"+clickStatus)
     if(clickStatus==true||clickStatus=="true"){
         $(this).closest(".choice-label").addClass("color");
     }else{

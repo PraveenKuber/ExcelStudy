@@ -8,7 +8,7 @@
 <link href="../css/logout.css" rel="stylesheet">
 
 <div class="logout-main">
-    <div class="logout-header">OEC</div>
+    <div class="logout-header">ADWIZE</div>
     <div class="logout-header-description">Overseas Education Consultancy</div>
     <div class="login-again" onclick="logout.performLoginOperation();">Login</div>
 </div>

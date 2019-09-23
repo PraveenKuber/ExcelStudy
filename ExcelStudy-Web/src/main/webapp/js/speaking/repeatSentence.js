@@ -47,7 +47,7 @@ var interval1;
 function newRepoRE(duration, display,recordAbleTime,audioFileLength) {
     var timer = duration, seconds;
     interval1 = setInterval(function () {
-        seconds = parseInt(timer % 60, 10);
+        seconds = /*parseInt(timer % 60, 10);*/  parseInt(timer);
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = "Beginning  in "+seconds;
         if (--timer < 0) {
@@ -98,7 +98,7 @@ function recordBeginForRepeatSenetnce(duration, display,recordAbleTime) {
     console.log("Recordable time :::::"+duration)
     var timer = duration, seconds;
     interval = setInterval(function () {
-        seconds = parseInt(timer % 60, 10);
+        seconds = /*parseInt(timer % 60, 10);*/ parseInt(timer);
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = "Recording will start in "+seconds;
         if (--timer < 0) {
@@ -205,6 +205,11 @@ $(document).on('click','.close-icon',function () {
 $(document).on('click', ".stop-repeat-sentence", function () {
     console.log("Clicked for stop");
     speechRecognizerRS.abort();
+    clearInterval(interval);
+    clearTimeout(timeOut);
+    clearInterval(interval1);
+    clearInterval(processBarIdRS);
+    clearAll();
 });
 
 

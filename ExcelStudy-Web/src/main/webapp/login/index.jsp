@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>OEC Login</title>
+    <title>ADWIZE</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -74,10 +74,9 @@
                         </div>
 
                         <div class="error-message">Incorrect UserName or Password</div>
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
-                                Login
-                            </button>
+                        <div class="col-md-4 container-login100-form-btn">
+                            <button class="login100-form-btn">Login</button>
+                            <button class="signin-form-btn">New User?</button>
                         </div>
 
                     </div>

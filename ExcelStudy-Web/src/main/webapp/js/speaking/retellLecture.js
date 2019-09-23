@@ -41,7 +41,7 @@ var intervalRL1;
 function newRepoRL(duration, display,recordAbleTime,audioFileLength) {
     var timer = duration, seconds;
     intervalRL1 = setInterval(function () {
-        seconds = parseInt(timer % 60, 10);
+        seconds = /*parseInt(timer % 60, 10);*/  parseInt(timer);
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = "Beginning  in "+seconds;
         if (--timer < 0) {
@@ -112,15 +112,15 @@ function  stopProcessBarRL() {
 
 
 function recordBeginForRetellLecture(duration, display,recordAbleTime) {
-    var timer = duration, seconds;
+    var timer = duration+10, seconds;
     interval = setInterval(function () {
-        seconds = parseInt(timer % 60, 10);
+        seconds = /*parseInt(timer % 60, 10);*/ parseInt(timer);
         seconds = seconds < 10 ? "0" + seconds : seconds;
         display.textContent = "Recording will start in "+seconds;
         if (--timer < 0) {
             timer = duration;
         }
-        console.log("Coming :::::::::::")
+        console.log("Coming ::::::::::: RLS")
         if(seconds==0){
             clearInterval(interval);
             $('.retellLecture-status').text("In Progress");
@@ -174,6 +174,10 @@ function  stopProcessProgressBarNewRL() {
     clearInterval(processBarIdNewRL);
     clearTimeout(timeOut);
     clearInterval(interval);
+
+    clearInterval(processBarIdRL);
+    clearInterval(intervalRL1);
+    
     $('#stop').click(); //stop audio record
     $('.stop-retellLecture').click(); // stop speech 
     $('.stop-audio-retellLecture').click();
@@ -336,7 +340,7 @@ $(document).on('click','.rl-previous',function () {
 
 
 $(document).on('click','.rl-try-again',function () {
-    var pageNumber = $('.common-pagination.active').attr('data-page-number');
+    var pageNumber = $('.rl-common-pagination').attr('data-page-number');
     relTellLecture.getRenderDetails(pageNumber,"","");
 })
 

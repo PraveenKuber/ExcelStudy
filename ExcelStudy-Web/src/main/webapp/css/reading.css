@@ -1,0 +1,243 @@
+
+
+.reading-division {
+    margin-top: 2%;
+}
+
+.ra-csa-render-div {
+    color: black;
+}
+
+
+
+.close-icon-re{
+    width: 1%;
+    margin-left: 96%;
+    cursor: pointer;
+}
+
+.ra-cma-render-div {
+    color: black;
+}
+
+.ra-cma-close-icon {
+    margin-left: 245px !important;
+}
+
+.ra-cma-alertMessage{
+    display: none;
+}
+
+
+
+.test-div {
+    visibility: hidden;
+}
+
+
+/*Reorder paragraph*/
+
+.draggable {
+    border: solid 2px gray;
+}
+
+
+.draggable.paragraph {
+    margin-top: 1%;
+    padding: 1%;
+    border-radius: 6px;
+    border-color: cadetblue;
+    cursor: move;
+}
+
+.order-paragraph{
+    min-height: 277px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.swapped-text {
+    border: 1px solid;
+    padding: 1%;
+}
+
+.drag-and-drop {
+    margin-top: 1%;
+}
+
+.fbox.order-paragraph,.fbox.swapped-text{
+    border: 1px solid black;
+    padding: 0%;
+    width: 49%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -webkit-user-select: none;
+}
+
+.fbox.order-paragraph{
+    margin-left: 1%;
+}
+
+.draggable.paragraph:hover{
+    background-color: aquamarine;
+}
+
+
+
+/*ROP*/
+
+.score-rop,.score-fibd,.score-fibr{
+    width: 80%;
+    margin-left: 5%;
+    border: 1px solid;
+}
+
+.score-section-rop,.score-section-fibd,.score-section-fibr{
+    display: none;
+    margin-top: 30px;
+}
+
+
+.rop-close-score-section,.fibd-close-score-section,
+.fibr-close-score-section{
+    width: 2%;
+    position: absolute;
+    margin-left: 78%;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+
+.rop-score-section-progress ,.fibd-score-section-progress,
+.fibr-score-section-progress{
+    width: 60%;
+    height: 25px;
+    background-color: rgba(211, 211, 211, 0.55);
+}
+
+
+ .fibd-score-section-progress.fibd-show-progress ,
+.fibr-score-section-progress.fibr-show-progress , .rop-score-section-progress.rop-show-progress{
+    margin-left: 185px;
+    position: absolute;
+    background-color: rgb(91, 245, 238);
+    margin-top: -42px;
+}
+
+/*.rop-score-section-progress.rop-show-progress{
+    margin-left: 211px;
+    margin-top: -45px;
+    position: absolute;
+    background-color: rgb(91, 245, 238);
+}*/
+
+
+.fibd-score-section-progress.fibd-show-progress , .fibr-score-section-progress.fibr-show-progress{
+    /*margin-left: 210px;
+    margin-top: -44px;*/
+    margin-left: 184px;
+    margin-top: -42px;
+    margin-bottom: 20px;
+}
+
+
+.selection-div.fill-in-the-blanks-re.fbox {
+    margin-top: 10px;
+    line-height: 30px;
+}
+
+
+
+
+
+/*Fill in the blanks*/
+
+
+.order-paragraph {
+    min-height: 277px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+
+.answer-area {
+    width: 100px;
+    height: 33px;
+    display: inline-block;
+    border: 1px solid;
+    cursor: pointer;
+    margin-left: 7px;
+    margin-top: 6px;
+}
+
+.answer-pick-area {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2%;
+    border: 1px solid;
+    padding: 2%;
+    background-color: #4cb7ad9e;
+}
+
+.answer-part {
+    width: 92px;
+    display: inline-block;
+    border: none;
+    cursor: move;
+    text-align: center;
+    background-color: white;
+    height: 20px;
+    margin-top: 3px;
+    margin-left: 4px;
+}
+
+
+.selection-div.fill-in-the-blanks-drag.fbox {
+    margin-top: 3%;
+    word-break: break-all;
+    line-break: auto;
+    line-height: 30px;
+}
+
+
+.fib-re-answer.fib-re-corrected {
+    background-color: #008000e0;
+    color: black;
+    font-weight: 600;
+    padding: 3px;
+    border-radius: 8px;
+    outline: none;
+}
+
+
+.fib-re-correct {
+    background-color: #008000c2;
+    padding: 2px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: none;
+}
+
+
+
+
+
+
+
+.ra-csa-alertMessage,.ra-rop-alertMessage,
+.ra-fib-alertMessage,.ra-fibd-alertMessage{
+  /*  width: 80%;
+    margin-left: 12%;
+    border: 1px solid;
+    padding: 1%;
+    background-color: rgb(255, 0, 0);
+    color: white*/;
+    display: none;
+}
+
+
+
+
+
+
+

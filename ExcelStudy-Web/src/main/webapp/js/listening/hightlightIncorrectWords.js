@@ -126,7 +126,7 @@ $(document).on('click','.hiw-check-answer',function () {
      var cssWidth = (percentage / 100)*width;
      $('.score-section-progress.show-progress').css({"width":cssWidth+"%"});
      $('.score-total').html(inCorrectedValues.length+"/"+totalIncorrectValues);
-     $('.score-percentage').html("["+percentage+"%]");
+     $('.score-percentage').html("["+Number(percentage).toFixed(2)+"%]");
      $('.score-section-hiw').show();
      $('.corrected').show();
 })
@@ -135,7 +135,7 @@ $(document).on('click','.hiw-close-icon',function () {
     $('.hiw-alertMessage').hide();
 })
 
-$(document).on('click','.close-score-section',function () {
+$(document).on('click','.hiw-close-score-section',function () {
     $('.corrected').hide();
     $('.inCorrected').css({"border-bottom":"none"});
     $('.score-section-hiw').hide();

@@ -156,6 +156,25 @@ public class ListeningManager {
     }
 
 
+    public FillInTheBlanks getFillInTheBlanks(int skip, int limit){
+        System.out.println("Query in FIB ::::::skip ::::"+skip+":::::;; limit ::::"+limit);
+        DBCursor dbCursor = pm.searchEntityWithSkipAndLimit(FillInTheBlanks.class.getSimpleName(),skip,limit);
+        FillInTheBlanks fillInTheBlanks = new FillInTheBlanks();
+        DBObject dbObject;
+        while (dbCursor.hasNext()){
+            dbObject = dbCursor.next();
+            fillInTheBlanks.setAudioScript(dbObject.get("audioScript").toString());
+            fillInTheBlanks.setAudioFilePath(dbObject.get("audioFilePath").toString());
+            fillInTheBlanks.setPreviouslyOccurred(dbObject.get("previouslyOccurred").toString());
+            List<String> correctWords = (List)dbObject.get("correctWords");
+            fillInTheBlanks.setAudioFileLength(dbObject.get("audioFileLength").toString());
+            fillInTheBlanks.setCorrectWords(correctWords);
+        }
+        return fillInTheBlanks;
+    }
+
+
+
 
 
 

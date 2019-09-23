@@ -89,7 +89,7 @@
     stringBuilder.append("</div>");
 
     stringBuilder.append("<div class=\"score-section-hiw\">");
-    stringBuilder.append("<div class=\"close-score-section\">x</div>");
+    stringBuilder.append("<div class=\"hiw-close-score-section\">x</div>");
     stringBuilder.append("<div class=\"score\">");
     stringBuilder.append("<div class=\"score-header\">Your score:</div>");
     stringBuilder.append("<div class=\"score-section-content\">");
